@@ -29,6 +29,8 @@ class DynamicComponent extends StatelessWidget {
                   children: [
                     Expanded(
                       child: TabBar(
+                        // 设置tab显示方式
+                        tabAlignment: TabAlignment.start,
                         labelColor: const Color(0xFF0a0f1e),
                         indicatorColor: const Color(0xffFF7E98),
                         overlayColor:

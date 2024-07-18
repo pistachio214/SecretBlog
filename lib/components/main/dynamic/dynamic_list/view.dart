@@ -56,7 +56,8 @@ class DynamicListComponent extends StatelessWidget {
                           return _swiperBuilder(context, index);
                         },
                         duration: 3000,
-                        viewportFraction: 0.8,
+                        // banner界面显示大小 100%
+                        viewportFraction: 1,
                         scale: 0.8,
                         pagination: null,
                         control: null,

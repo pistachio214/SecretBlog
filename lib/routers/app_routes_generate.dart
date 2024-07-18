@@ -8,6 +8,7 @@ import 'package:talk/routers/middleware/route_on_board_middleware.dart';
 
 import 'package:talk/ui/main/view.dart';
 import 'package:talk/ui/member/view.dart';
+import 'package:talk/ui/message_private_chat/view.dart';
 
 class AppRoutesGenerate {
   static final List<AppRoutesModels> routes = <AppRoutesModels>[
@@ -25,6 +26,11 @@ class AppRoutesGenerate {
       () => MemberPage(),
       transition: Transition.rightToLeft,
     ),
+    AppRoutesModels(
+      AppRoutes.messagePrivateChat,
+      () => MessagePrivateChatPage(),
+      transition: Transition.rightToLeft,
+    ),
   ];
 
   static final List<String> noValidation = <String>[
@@ -33,6 +39,7 @@ class AppRoutesGenerate {
     AppRoutes.register,
     AppRoutes.main,
     AppRoutes.member,
+    AppRoutes.messagePrivateChat,
   ];
 
   // 通用过滤器

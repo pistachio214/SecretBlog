@@ -17,6 +17,6 @@ abstract class AppRoutes {
   /// 用户详情
   static const String member = "/member";
 
-  /// 消息对话
-  static const String message = "/message";
+  /// 私聊消息对话
+  static const String messagePrivateChat = "/message_private_chat";
 }

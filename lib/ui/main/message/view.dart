@@ -68,20 +68,17 @@ class MessageComponent extends StatelessWidget {
                 ),
 
                 // 聊天对话框列表
-                Container(
-                  child: ListView.builder(
-                      itemCount: state.userList.length,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (BuildContext context, int index) {
-                        return MessageChatItemComponent(
-                          data: state.userList[index],
-                          onTap: () {
-                            Get.log('111');
-                          },
-                        );
-                      }),
+                ListView.builder(
+                  itemCount: state.userList.length,
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (BuildContext context, int index) {
+                    return MessageChatItemComponent(
+                      data: state.userList[index],
+                      onTap: () => logic.goPrivateChat(state.userList[index].name),
+                    );
+                  },
                 ),
               ],
             ),

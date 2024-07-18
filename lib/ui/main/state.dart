@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:talk/ui/main/dynamic/view.dart';
+
 import 'package:talk/utils/icon_font_util.dart';
+
+import 'package:talk/ui/main/dynamic/view.dart';
+import 'package:talk/ui/main/message/view.dart';
 
 class MainState {
   late List<BottomNavigationBarItem> bottomTabs;
@@ -59,9 +62,7 @@ class MainState {
       const Center(
         child: Text("+"),
       ),
-      const Center(
-        child: Text("对话"),
-      ),
+      MessageComponent(),
       const Center(
         child: Text("用户"),
       ),

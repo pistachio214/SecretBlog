@@ -16,7 +16,7 @@ class RouteAuthMiddleware extends GetMiddleware {
     String? tokenValue = storageBox.read("tokenValue");
 
     if (tokenName == null || tokenValue == null) {
-      return const RouteSettings(name: AppRoutes.loginBefore);
+      return const RouteSettings(name: AppRoutes.login);
     }
 
     String? profile = storageBox.read("profile");

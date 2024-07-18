@@ -10,13 +10,6 @@ class NoShadowScrollBehaviorHandle extends ScrollBehavior {
       case TargetPlatform.macOS:
         return child;
       case TargetPlatform.android:
-        return GlowingOverscrollIndicator(
-          axisDirection: details.direction,
-          color: Theme.of(context).colorScheme.secondary,
-          showLeading: false,
-          showTrailing: false,
-          child: child,
-        );
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
       case TargetPlatform.windows:

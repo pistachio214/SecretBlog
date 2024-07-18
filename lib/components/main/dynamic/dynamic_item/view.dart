@@ -5,6 +5,7 @@ import 'package:talk/components/avatar_component.dart';
 import 'package:talk/components/gaps_component.dart';
 import 'package:talk/components/main/discovery/topic_item/view.dart';
 import 'package:talk/components/main/dynamic/dynamic_item_image/view.dart';
+import 'package:talk/routers/app_routes.dart';
 
 import 'logic.dart';
 
@@ -39,9 +40,12 @@ class DynamicItemComponent extends StatelessWidget {
           _renderCover(context),
           Gaps.vGap15,
           DynamicItemImageComponent(
-              image: data.image, onTap: () => onTapImage()),
+            image: data.image,
+            onTap: () => onTapImage(),
+          ),
           GestureDetector(
             onTap: () {
+              Get.log("是不是这里");
               // NavigatorUtils.push(
               //     context, DynamicsRouter.dynamicDetailPage);
             },
@@ -67,6 +71,7 @@ class DynamicItemComponent extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         // NavigatorUtils.push(context, UsersRouter.userPage);
+        Get.toNamed(AppRoutes.member);
       },
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -133,9 +138,9 @@ class DynamicItemComponent extends StatelessWidget {
   Widget _renderDynamicTagAndComment(context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
+      children: [
         Row(
-          children: <Widget>[
+          children: [
             TopicItemComponent(
               topic: '搞事情~',
               onTap: () {
@@ -147,16 +152,16 @@ class DynamicItemComponent extends StatelessWidget {
         Gaps.vGap15,
         const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
+          children: [
             Icon(
               IconFont.icon_fabu,
               size: 20,
             ),
             Row(
-              children: <Widget>[
+              children: [
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
+                  children: [
                     Icon(
                       IconFont.icon_guanzhu,
                       size: 20,
@@ -174,7 +179,7 @@ class DynamicItemComponent extends StatelessWidget {
                 Gaps.hGap12,
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
+                  children: [
                     Icon(
                       IconFont.icon_liaotian,
                       size: 20,

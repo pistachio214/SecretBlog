@@ -28,7 +28,7 @@ class DynamicListLogic extends GetxController {
       avatar:
       'https://pic4.zhimg.com/80/v2-a1692d6717a7c22fb277a6a1e4443a98_hd.jpg',
     ),
-    content: '我胖虎今天就是要搞事情',
+    content: '我胖虎今天就是要搞事情,我胖虎今天就是要搞事情,我胖虎今天就是要搞事情,我胖虎今天就是要搞事情,我胖虎今天就是要搞事情,我胖虎今天就是要搞事情,我胖虎今天就是要搞事情,我胖虎今天就是要搞事情,我胖虎今天就是要搞事情.',
     image: [
       'http://wx1.sinaimg.cn/large/a6d0124fly1fmvjldxon7j204w057js6.jpg',
     ],

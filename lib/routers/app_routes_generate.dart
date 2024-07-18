@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 
-
 import 'package:talk/routers/middleware/route_auth_middleware.dart';
 
 import 'package:talk/routers/app_routes.dart';
@@ -8,6 +7,7 @@ import 'package:talk/routers/app_routes_models.dart';
 import 'package:talk/routers/middleware/route_on_board_middleware.dart';
 
 import 'package:talk/ui/main/view.dart';
+import 'package:talk/ui/member/view.dart';
 
 class AppRoutesGenerate {
   static final List<AppRoutesModels> routes = <AppRoutesModels>[
@@ -17,18 +17,22 @@ class AppRoutesGenerate {
     //   () => RealLoginPage(),
     //   transition: Transition.rightToLeft,
     // ),
-    // AppRoutesModels(AppRoutes.loginBefore, () => BeforeLoginPage()),
     // AppRoutesModels(AppRoutes.register, () => RegisterPage()),
     // AppRoutesModels(AppRoutes.stepProfile, () => StepProfilePage()),
     AppRoutesModels(AppRoutes.main, () => MainPage()),
+    AppRoutesModels(
+      AppRoutes.member,
+      () => MemberPage(),
+      transition: Transition.rightToLeft,
+    ),
   ];
 
   static final List<String> noValidation = <String>[
     AppRoutes.onBoard,
-    AppRoutes.loginBefore,
     AppRoutes.login,
     AppRoutes.register,
     AppRoutes.main,
+    AppRoutes.member,
   ];
 
   // 通用过滤器

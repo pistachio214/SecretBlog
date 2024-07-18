@@ -81,12 +81,15 @@ class DynamicListComponent extends StatelessWidget {
                             index: index,
                             data: state.dynamicList[index],
                             onTapImage: () {
+                              Get.log("点击了图片");
                               // Provider.of<CommonProvider>(context, listen: false)
                               //     .setDynamicImageList(dynamicList[index].image);
                               // NavigatorUtils.push(
                               //     context, DynamicsRouter.photoViewGalleryScreen);
                             },
-                            onTapItem: () {},
+                            onTapItem: () {
+                              Get.log("点击ITEM");
+                            },
                           );
                         },
                       ),

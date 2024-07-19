@@ -1,16 +1,19 @@
 # SexyTalk
 
-A new Flutter project.
+随便搞的一个社交类型的App
 
-## Getting Started
+## 主要插件版本
 
-This project is a starting point for a Flutter application.
+使用GetX作为状态管理工具
 
-A few resources to get you started if this is your first Flutter project:
+- GetX ^4.6.6
+- flutter_swiper_view ^1.1.8
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+...
+
+后续再补充
+
+## 关于界面
+
+由于就是码仔，不会设计ui，界面借鉴 [Martin小哥的flutter-talk项目](https://docs.flutter.dev/)

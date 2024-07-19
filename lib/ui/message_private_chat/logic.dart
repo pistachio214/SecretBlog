@@ -24,8 +24,7 @@ class MessagePrivateChatLogic extends GetxController {
         state.scrollController.value.animateTo(
             state.scrollController.value.position.maxScrollExtent,
             duration: const Duration(milliseconds: 300),
-            curve: Curves.easeOut
-        );
+            curve: Curves.easeOut);
         // 你可以在这里更新状态、发送请求等
       }
     });
@@ -49,7 +48,9 @@ class MessagePrivateChatLogic extends GetxController {
 
     // 检查是否需要滚动到底部
     Future.delayed(Duration.zero, () {
-      if (state.scrollController.value.hasClients && state.scrollController.value.offset >= state.scrollController.value.position.maxScrollExtent) {
+      if (state.scrollController.value.hasClients &&
+          state.scrollController.value.offset >=
+              state.scrollController.value.position.maxScrollExtent) {
         // 如果已经滚动到底部，则不需要再次滚动
         return;
       }
@@ -58,9 +59,15 @@ class MessagePrivateChatLogic extends GetxController {
       state.scrollController.value.animateTo(
           state.scrollController.value.position.maxScrollExtent,
           duration: const Duration(milliseconds: 300),
-          curve: Curves.easeOut
-      );
+          curve: Curves.easeOut);
     });
   }
 
+  @override
+  void onClose() {
+    state.focusNode.value.removeListener(() => {}); // 移除监听,避免内存泄露
+    state.focusNode.value.dispose();
+
+    super.onClose();
+  }
 }

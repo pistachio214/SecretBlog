@@ -32,10 +32,12 @@ class MessagePrivateChatPage extends StatelessWidget {
         height: Get.height,
         // padding: const EdgeInsets.only(top: 15),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Obx(
               () => Flexible(
                 child: SingleChildScrollView(
+                  controller: state.scrollController.value,
                   child: ListView.builder(
                     itemCount: state.data.length,
                     shrinkWrap: true,
@@ -51,35 +53,47 @@ class MessagePrivateChatPage extends StatelessWidget {
                 ),
               ),
             ),
-            const Divider(height: 1.0),
-            Container(
-              height: 50,
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  const Icon(
-                    Icons.mic,
-                    color: Colors.lightBlue,
-                    size: 24,
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: TextField(
-                      controller: state.textController.value,
-                      onSubmitted: (String text) => logic.handleSubmitted(text),
-                      decoration: const InputDecoration.collapsed(
-                        hintText: '发送消息',
+            Column(
+              children: [
+                const Divider(height: 1.0),
+                Container(
+                  height: 50,
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const Icon(
+                        Icons.mic,
+                        color: Colors.lightBlue,
+                        size: 24,
                       ),
-                    ),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: TextField(
+                          controller: state.textController.value,
+                          focusNode: state.focusNode.value,
+                          // onSubmitted: (String text) =>
+                          //     logic.handleSubmitted(text),
+                          decoration: const InputDecoration.collapsed(
+                            hintText: '发送消息',
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          String text = state.textController.value.text;
+                          logic.handleSubmitted(text);
+                        },
+                        icon: const Icon(
+                          Icons.send,
+                          color: Color(0xFFff7faa),
+                        ),
+                      ),
+                    ],
                   ),
-                  const Icon(
-                    Icons.send,
-                    color: Color(0xFFff7faa),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),

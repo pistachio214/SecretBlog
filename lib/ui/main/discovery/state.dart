@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:talk/components/main/discovery/nearby/view.dart';
 import 'package:talk/components/main/discovery/topic/view.dart';
 
 class DiscoveryState {
@@ -8,9 +9,7 @@ class DiscoveryState {
   DiscoveryState() {
     pageList = <Widget>[
       TopicComponent(),
-      Container(
-        child: Text("附近"),
-      ),
+      NearbyComponent(),
       Container(
         child: Text("约伴"),
       ),

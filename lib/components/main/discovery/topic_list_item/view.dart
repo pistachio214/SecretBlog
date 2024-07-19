@@ -25,20 +25,20 @@ class TopicListItemComponent extends StatelessWidget {
     return GestureDetector(
       onTap: () => onTap(),
       child: Column(
-        children: <Widget>[
+        children: [
           SizedBox(
             height: 100,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
+              children: [
                 Expanded(
                   child: Container(
                     padding: const EdgeInsets.only(right: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
+                      children: [
                         Text(
                           '# ${data.tag}',
                           style: const TextStyle(

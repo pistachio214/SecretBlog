@@ -43,6 +43,7 @@ class DynamicItemComponent extends StatelessWidget {
             image: data.image,
             onTap: () => onTapImage(),
           ),
+          Gaps.vGap15,
           GestureDetector(
             onTap: () {
               Get.log("是不是这里");

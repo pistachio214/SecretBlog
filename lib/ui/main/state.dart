@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:talk/ui/main/discovery/view.dart';
 
 import 'package:talk/utils/icon_font_util.dart';
 
@@ -56,9 +57,7 @@ class MainState {
 
     tabBodies = <Widget>[
       DynamicComponent(),
-      const Center(
-        child: Text("热度"),
-      ),
+      DiscoveryComponent(),
       const Center(
         child: Text("+"),
       ),

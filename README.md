@@ -19,7 +19,7 @@
 
 ## 关于界面
 
-单纯是码仔，不会ui，所以界面借鉴的 [Martin小哥的flutter-talk项目](https://docs.flutter.dev/)，换了个状态管理框架，重构了一下
+单纯是码仔，不会ui，所以界面借鉴的 [Martin小哥的flutter-talk项目](https://github.com/martin-yin/flutter-talk)，换了个状态管理框架，重构了一下
 
 ## 未解决问题
 

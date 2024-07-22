@@ -16,7 +16,7 @@
 
 ## 关于界面
 
-由于就是码仔，不会设计ui，界面借鉴 [Martin小哥的flutter-talk项目](https://docs.flutter.dev/)
+单纯是码仔，不会ui，所以界面借鉴的 [Martin小哥的flutter-talk项目](https://docs.flutter.dev/)，换了个状态管理框架，重构了一下
 
 ## 未解决问题
 

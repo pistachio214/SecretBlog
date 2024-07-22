@@ -45,11 +45,7 @@ class DynamicItemComponent extends StatelessWidget {
           ),
           Gaps.vGap15,
           GestureDetector(
-            onTap: () {
-              Get.log("是不是这里");
-              // NavigatorUtils.push(
-              //     context, DynamicsRouter.dynamicDetailPage);
-            },
+            onTap: () => logic.goDetail(),
             child: Text(
               data.content,
               maxLines: 3,

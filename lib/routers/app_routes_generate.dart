@@ -5,6 +5,7 @@ import 'package:talk/routers/middleware/route_auth_middleware.dart';
 import 'package:talk/routers/app_routes.dart';
 import 'package:talk/routers/app_routes_models.dart';
 import 'package:talk/routers/middleware/route_on_board_middleware.dart';
+import 'package:talk/ui/dynamic_detail/view.dart';
 
 import 'package:talk/ui/main/view.dart';
 import 'package:talk/ui/member/view.dart';
@@ -31,6 +32,10 @@ class AppRoutesGenerate {
       () => MessagePrivateChatPage(),
       transition: Transition.rightToLeft,
     ),
+    AppRoutesModels(
+      AppRoutes.dynamicDetail,
+      () => DynamicDetailPage(),
+    )
   ];
 
   static final List<String> noValidation = <String>[
@@ -40,6 +45,7 @@ class AppRoutesGenerate {
     AppRoutes.main,
     AppRoutes.member,
     AppRoutes.messagePrivateChat,
+    AppRoutes.dynamicDetail,
   ];
 
   // 通用过滤器

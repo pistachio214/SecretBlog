@@ -19,4 +19,7 @@ abstract class AppRoutes {
 
   /// 私聊消息对话
   static const String messagePrivateChat = "/message_private_chat";
+
+  /// 动态详情
+  static const String dynamicDetail = "/dynamic_detail";
 }

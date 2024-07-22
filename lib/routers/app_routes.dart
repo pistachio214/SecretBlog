@@ -22,4 +22,7 @@ abstract class AppRoutes {
 
   /// 动态详情
   static const String dynamicDetail = "/dynamic_detail";
+
+  /// 话题详情
+  static const String topicDetail = "/topic_detail";
 }

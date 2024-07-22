@@ -10,6 +10,7 @@ import 'package:talk/ui/dynamic_detail/view.dart';
 import 'package:talk/ui/main/view.dart';
 import 'package:talk/ui/member/view.dart';
 import 'package:talk/ui/message_private_chat/view.dart';
+import 'package:talk/ui/topic_detail/view.dart';
 
 class AppRoutesGenerate {
   static final List<AppRoutesModels> routes = <AppRoutesModels>[
@@ -35,7 +36,11 @@ class AppRoutesGenerate {
     AppRoutesModels(
       AppRoutes.dynamicDetail,
       () => DynamicDetailPage(),
-    )
+    ),
+    AppRoutesModels(
+      AppRoutes.topicDetail,
+      () => TopicDetailPage(),
+    ),
   ];
 
   static final List<String> noValidation = <String>[
@@ -46,6 +51,7 @@ class AppRoutesGenerate {
     AppRoutes.member,
     AppRoutes.messagePrivateChat,
     AppRoutes.dynamicDetail,
+    AppRoutes.topicDetail,
   ];
 
   // 通用过滤器

@@ -26,7 +26,6 @@ class DynamicDetailPage extends StatelessWidget {
           ),
         ),
         backgroundColor: Colors.white,
-        // elevation: 0,
         scrolledUnderElevation: 0,
       ),
       backgroundColor: Colors.white,

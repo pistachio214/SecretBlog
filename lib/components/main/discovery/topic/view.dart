@@ -43,12 +43,10 @@ class TopicComponent extends StatelessWidget {
                   Gaps.vGap10,
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
+                    children: [
                       TopicItemComponent(
                         topic: '你的小心想',
-                        onTap: () {
-                          // NavigatorUtils.push(context, DiscoveryRouter.topicDetailPage);
-                        },
+                        onTap: () => logic.goTopicDetail(),
                       ),
                       Gaps.hGap10,
                       TopicItemComponent(
@@ -68,7 +66,7 @@ class TopicComponent extends StatelessWidget {
                         itemBuilder: (BuildContext context, int index) {
                           return TopicListItemComponent(
                             data: state.newsList[index],
-                            onTap: () {},
+                            onTap: () => logic.goTopicDetail(),
                           );
                         }),
                   )

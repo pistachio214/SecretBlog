@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:talk/ui/main/discovery/view.dart';
+import 'package:talk/ui/main/user/view.dart';
 
 import 'package:talk/utils/icon_font_util.dart';
 
@@ -62,9 +63,7 @@ class MainState {
         child: Text("+"),
       ),
       MessageComponent(),
-      const Center(
-        child: Text("用户"),
-      ),
+      UserComponent(),
     ].obs;
   }
 }

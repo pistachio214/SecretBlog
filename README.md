@@ -17,3 +17,7 @@
 ## 关于界面
 
 由于就是码仔，不会设计ui，界面借鉴 [Martin小哥的flutter-talk项目](https://docs.flutter.dev/)
+
+## 未解决问题
+
+[x] TabBar的切换时，文字抖动的问题

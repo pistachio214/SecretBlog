@@ -1,4 +1,7 @@
-# SexyTalk
+# Secret Blog
+
+起名为 秘博
+
 
 随便搞的一个社交类型的App
 

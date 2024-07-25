@@ -38,7 +38,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Sexy Talk',
+      title: '秘博',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xffE86494)),
         primarySwatch: createMaterialColor(const Color(0xffFCFCFC)),

@@ -58,7 +58,7 @@ class DynamicListComponent extends StatelessWidget {
                         duration: 3000,
                         // banner界面显示大小 100%
                         viewportFraction: 1,
-                        scale: 0.8,
+                        scale: 1,
                         pagination: null,
                         control: null,
                         onTap: (int index) {

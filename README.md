@@ -32,12 +32,12 @@
 
 ## 内容展示
 
-<img alt="image" src="images/1.jpg" title="图片1" width="150"/>
-![image](images/2.jpg)
-![image](images/3.jpg)
-![image](images/4.jpg)
-![image](images/5.jpg)
-![image](images/6.jpg)
-![image](images/7.jpg)
-![image](images/8.jpg)
-![image](images/9.jpg)
+<img alt="image" src="images/1.jpg" title="图片1" width="300"/>
+<img alt="image" src="images/2.jpg" title="图片2" width="300"/>
+<img alt="image" src="images/3.jpg" title="图片3" width="300"/>
+<img alt="image" src="images/4.jpg" title="图片4" width="300"/>
+<img alt="image" src="images/5.jpg" title="图片5" width="300"/>
+<img alt="image" src="images/6.jpg" title="图片6" width="300"/>
+<img alt="image" src="images/7.jpg" title="图片7" width="300"/>
+<img alt="image" src="images/8.jpg" title="图片8" width="300"/>
+<img alt="image" src="images/9.jpg" title="图片9" width="300"/>

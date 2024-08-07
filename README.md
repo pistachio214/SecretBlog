@@ -32,7 +32,7 @@
 
 ## 内容展示
 
-![image](images/1.jpg)
+<img alt="image" src="images/1.jpg" title="图片1" width="150"/>
 ![image](images/2.jpg)
 ![image](images/3.jpg)
 ![image](images/4.jpg)

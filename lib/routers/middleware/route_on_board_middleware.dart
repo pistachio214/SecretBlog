@@ -12,12 +12,12 @@ class RouteOnBoardMiddleware extends GetMiddleware {
   @override
   RouteSettings? redirect(String? route) {
     //缓存实例化
-    final GetStorage storageBox = GetStorage();
-    bool? firstOpenStatus = storageBox.read("fistOpen");
-
-    if (firstOpenStatus == null || !firstOpenStatus) {
-      return const RouteSettings(name: AppRoutes.onBoard);
-    }
+    // final GetStorage storageBox = GetStorage();
+    // bool? firstOpenStatus = storageBox.read("fistOpen");
+    //
+    // if (firstOpenStatus == null || !firstOpenStatus) {
+    //   return const RouteSettings(name: AppRoutes.onBoard);
+    // }
 
     return null;
   }

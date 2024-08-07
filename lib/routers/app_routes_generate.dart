@@ -45,14 +45,14 @@ class AppRoutesGenerate {
   ];
 
   static final List<String> noValidation = <String>[
-    AppRoutes.onBoard,
+    // AppRoutes.onBoard,
     AppRoutes.login,
     AppRoutes.register,
-    AppRoutes.main,
-    AppRoutes.member,
-    AppRoutes.messagePrivateChat,
-    AppRoutes.dynamicDetail,
-    AppRoutes.topicDetail,
+    // AppRoutes.main,
+    // AppRoutes.member,
+    // AppRoutes.messagePrivateChat,
+    // AppRoutes.dynamicDetail,
+    // AppRoutes.topicDetail,
   ];
 
   // 通用过滤器

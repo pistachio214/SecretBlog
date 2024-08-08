@@ -72,6 +72,80 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 15),
+              Obx(
+                () => Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Visibility(
+                      visible: state.currentIndex.value == "",
+                      child: InkWell(
+                        overlayColor:
+                            WidgetStateProperty.all(Colors.transparent),
+                        onTap: () => logic.checkRadio(),
+                        child: const Icon(
+                          Icons.panorama_fisheye_outlined,
+                          size: 18,
+                          color: Color(0xff797777),
+                        ),
+                      ),
+                    ),
+                    Visibility(
+                      visible: state.currentIndex.value == "1",
+                      child: InkWell(
+                        overlayColor:
+                            WidgetStateProperty.all(Colors.transparent),
+                        onTap: () => logic.cancelRadio(),
+                        child: const Icon(
+                          Icons.check_circle_sharp,
+                          size: 18,
+                          color: Color(0xffFF7E98),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    const Text(
+                      "已阅读并同意 ",
+                      style: TextStyle(
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () => logic.userAgreement(),
+                      overlayColor: WidgetStateProperty.all(Colors.transparent),
+                      child: const Text(
+                        "《用户协议》",
+                        style: TextStyle(
+                          fontSize: 12.0,
+                          color: Colors.lightBlue,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    const Text(
+                      " 和 ",
+                      style: TextStyle(
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () => logic.privacyPolicy(),
+                      overlayColor: WidgetStateProperty.all(Colors.transparent),
+                      child: const Text(
+                        "《隐私政策》",
+                        style: TextStyle(
+                          fontSize: 12.0,
+                          color: Colors.lightBlue,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 15),
               TextButton(
                 style: ButtonStyle(
                   shape: WidgetStateProperty.all(
@@ -82,7 +156,7 @@ class LoginPage extends StatelessWidget {
                   backgroundColor:
                       WidgetStateProperty.all(const Color(0xffFF7E98)),
                 ),
-                onPressed: () {},
+                onPressed: () => logic.loginAction(),
                 child: const Text(
                   "登录",
                   style: TextStyle(
@@ -92,6 +166,33 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 15),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(width: 8),
+                  const Text(
+                    "忘记了? ",
+                    style: TextStyle(
+                      fontSize: 12.0,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () => logic.retrievePassword(),
+                    overlayColor: WidgetStateProperty.all(Colors.transparent),
+                    child: const Text(
+                      "找回密码",
+                      style: TextStyle(
+                        fontSize: 12.0,
+                        color: Colors.lightBlue,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),

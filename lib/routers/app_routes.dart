@@ -8,8 +8,11 @@ abstract class AppRoutes {
   /// 注册界面
   static const String register = '/register';
 
-  /// 设置个人信息
-  static const String stepProfile = '/step_profile';
+  /// 用户协议界面
+  static const String userAgreement = "/user_agreement";
+
+  /// 隐私政策界面
+  static const String privacyPolicy = "/privacy_policy";
 
   /// main界面
   static const String main = '/';

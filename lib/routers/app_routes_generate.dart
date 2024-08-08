@@ -9,9 +9,11 @@ import 'package:talk/routers/middleware/route_on_board_middleware.dart';
 import 'package:talk/ui/main/view.dart';
 import 'package:talk/ui/member/view.dart';
 import 'package:talk/ui/message_private_chat/view.dart';
+import 'package:talk/ui/privacy_policy/view.dart';
 import 'package:talk/ui/topic_detail/view.dart';
 import 'package:talk/ui/dynamic_detail/view.dart';
 import 'package:talk/ui/login/view.dart';
+import 'package:talk/ui/user_agreement/view.dart';
 
 class AppRoutesGenerate {
   static final List<AppRoutesModels> routes = <AppRoutesModels>[
@@ -21,8 +23,17 @@ class AppRoutesGenerate {
       () => LoginPage(),
       transition: Transition.rightToLeft,
     ),
+    AppRoutesModels(
+      AppRoutes.userAgreement,
+      () => UserAgreementPage(),
+      transition: Transition.rightToLeft,
+    ),
+    AppRoutesModels(
+      AppRoutes.privacyPolicy,
+      () => PrivacyPolicyPage(),
+      transition: Transition.rightToLeft,
+    ),
     // AppRoutesModels(AppRoutes.register, () => RegisterPage()),
-    // AppRoutesModels(AppRoutes.stepProfile, () => StepProfilePage()),
     AppRoutesModels(AppRoutes.main, () => MainPage()),
     AppRoutesModels(
       AppRoutes.member,
@@ -48,11 +59,8 @@ class AppRoutesGenerate {
     // AppRoutes.onBoard,
     AppRoutes.login,
     AppRoutes.register,
-    // AppRoutes.main,
-    // AppRoutes.member,
-    // AppRoutes.messagePrivateChat,
-    // AppRoutes.dynamicDetail,
-    // AppRoutes.topicDetail,
+    AppRoutes.userAgreement,
+    AppRoutes.privacyPolicy,
   ];
 
   // 通用过滤器

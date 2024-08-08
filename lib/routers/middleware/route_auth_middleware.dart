@@ -19,11 +19,6 @@ class RouteAuthMiddleware extends GetMiddleware {
       return const RouteSettings(name: AppRoutes.login);
     }
 
-    String? profile = storageBox.read("profile");
-    if (profile == null && route != AppRoutes.stepProfile) {
-      return const RouteSettings(name: AppRoutes.stepProfile);
-    }
-
     return null;
   }
 }

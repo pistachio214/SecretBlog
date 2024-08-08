@@ -25,6 +25,11 @@ class LoginLogic extends GetxController {
     Get.toNamed(AppRoutes.privacyPolicy);
   }
 
+  /// 前往注册界面
+  void goRegister() {
+    Get.toNamed(AppRoutes.register);
+  }
+
   /// 找回密码
   void retrievePassword() {
     ToastUtil.shotToast("内测阶段,找回密码请联系管理员！");

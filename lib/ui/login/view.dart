@@ -154,7 +154,7 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   backgroundColor:
-                      WidgetStateProperty.all(const Color(0xffFF7E98)),
+                      WidgetStateProperty.all(const Color(0xfff85e7a)),
                 ),
                 onPressed: () => logic.loginAction(),
                 child: const Text(
@@ -166,6 +166,34 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 15),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(width: 8),
+                  const Text(
+                    "没有账号? ",
+                    style: TextStyle(
+                      fontSize: 12.0,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () => logic.goRegister(),
+                    overlayColor: WidgetStateProperty.all(Colors.transparent),
+                    child: const Text(
+                      "前往注册",
+                      style: TextStyle(
+                        fontSize: 12.0,
+                        color: Colors.lightBlue,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
               const SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -192,7 +220,8 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                 ],
-              )
+              ),
+
             ],
           ),
         ),

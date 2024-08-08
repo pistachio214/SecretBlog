@@ -42,6 +42,14 @@ class LoginLogic extends GetxController {
       return;
     }
 
-    
+
+  }
+
+  @override
+  void onClose() {
+    state.usernameController.value.dispose();
+    state.passwordController.value.dispose();
+
+    super.onClose();
   }
 }

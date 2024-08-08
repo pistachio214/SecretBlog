@@ -27,6 +27,7 @@ class AppRoutesGenerate {
     AppRoutesModels(
       AppRoutes.register,
       () => RegisterPage(),
+      transition: Transition.rightToLeft,
     ),
     AppRoutesModels(
       AppRoutes.userAgreement,

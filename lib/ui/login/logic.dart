@@ -7,14 +7,6 @@ import 'state.dart';
 class LoginLogic extends GetxController {
   final LoginState state = LoginState();
 
-  void checkRadio() {
-    state.currentIndex.value = "1";
-  }
-
-  void cancelRadio() {
-    state.currentIndex.value = "";
-  }
-
   /// 用户协议
   void userAgreement() {
     Get.toNamed(AppRoutes.userAgreement);
@@ -37,9 +29,19 @@ class LoginLogic extends GetxController {
 
   /// 登录
   void loginAction() {
-    if (state.currentIndex.value == "") {
-      ToastUtil.shotToast("请先同意《用户协议》和《隐私政策》");
+    String username = state.usernameController.value.text;
+    String password = state.passwordController.value.text;
+
+    if (username.isEmpty) {
+      ToastUtil.shotToast("登录账号不能为空");
       return;
     }
+
+    if (password.isEmpty) {
+      ToastUtil.shotToast("登录密码不能为空");
+      return;
+    }
+
+    
   }
 }

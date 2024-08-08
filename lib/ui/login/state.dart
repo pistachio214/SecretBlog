@@ -1,9 +1,13 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginState {
-  late RxString currentIndex = "".obs;
+
+  late Rx<TextEditingController> usernameController;
+  late Rx<TextEditingController> passwordController;
 
   LoginState() {
-    ///Initialize variables
+    usernameController = TextEditingController().obs;
+    passwordController = TextEditingController().obs;
   }
 }

@@ -104,6 +104,8 @@ class UserEditPage extends StatelessWidget {
                               height: 120,
                             ),
                             InkWell(
+                              overlayColor:
+                                  WidgetStateProperty.all(Colors.transparent),
                               onTap: () {
                                 Get.log("点击更换头像");
                               },

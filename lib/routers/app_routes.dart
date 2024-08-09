@@ -17,6 +17,9 @@ abstract class AppRoutes {
   /// main界面
   static const String main = '/';
 
+  /// 用户编辑界面
+  static const String userEdit = "/user_edit";
+
   /// 用户详情
   static const String member = "/member";
 

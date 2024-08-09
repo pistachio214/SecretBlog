@@ -75,22 +75,25 @@ class UserComponent extends StatelessWidget {
                                       width: 70,
                                       height: 70,
                                     ),
-                                    Container(
-                                      alignment: Alignment.center,
-                                      height: 28,
-                                      width: 58,
-                                      decoration: const BoxDecoration(
-                                        color: Color(0xFFff7faa),
-                                        borderRadius: BorderRadius.all(
-                                          Radius.circular(18),
+                                    InkWell(
+                                      onTap: () => logic.onToEditAction(),
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        height: 28,
+                                        width: 58,
+                                        decoration: const BoxDecoration(
+                                          color: Color(0xFFff7faa),
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(18),
+                                          ),
                                         ),
-                                      ),
-                                      child: const Text(
-                                        '编辑',
-                                        style: TextStyle(
-                                          fontFamily: 'PingFang-SC-Medium',
-                                          color: Colors.white,
-                                          fontSize: 13,
+                                        child: const Text(
+                                          '编辑',
+                                          style: TextStyle(
+                                            fontFamily: 'PingFang-SC-Medium',
+                                            color: Colors.white,
+                                            fontSize: 13,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -197,30 +200,6 @@ class UserComponent extends StatelessWidget {
                                         Gaps.vGap8,
                                         const Text(
                                           '赞',
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            color: Color(0xfff5f5f5),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(width: 32),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          '${state.userInfo.value.footprint}',
-                                          style: const TextStyle(
-                                            fontSize: 18,
-                                            fontFamily: 'PingFang-SC-Medium',
-                                            fontWeight: FontWeight.w800,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        Gaps.vGap8,
-                                        const Text(
-                                          '足迹',
                                           style: TextStyle(
                                             fontSize: 14,
                                             color: Color(0xfff5f5f5),
@@ -344,17 +323,19 @@ class UserComponent extends StatelessWidget {
                     Text(
                       '22',
                       style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'PingFang-SC-Medium',
-                          color: Color(0xff333333)),
+                        fontSize: 18,
+                        fontFamily: 'PingFang-SC-Medium',
+                        color: Color(0xff333333),
+                      ),
                     ),
                     Gaps.vGap4,
                     Text(
                       '2020.2',
                       style: TextStyle(
-                          fontSize: 12,
-                          fontFamily: 'PingFang-SC-Medium',
-                          color: Color(0xff999999)),
+                        fontSize: 12,
+                        fontFamily: 'PingFang-SC-Medium',
+                        color: Color(0xff999999),
+                      ),
                     ),
                   ],
                 ),
@@ -398,7 +379,7 @@ class UserComponent extends StatelessWidget {
                                 fontFamily: 'PingFang-SC-Medium',
                                 color: Color(0xff333333),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),

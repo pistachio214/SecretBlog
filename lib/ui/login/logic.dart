@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:talk/routers/app_routes.dart';
 import 'package:talk/utils/toast_util.dart';
 
@@ -42,7 +43,12 @@ class LoginLogic extends GetxController {
       return;
     }
 
+    //缓存实例化
+    final GetStorage storageBox = GetStorage();
+    storageBox.write("tokenName", "1");
+    storageBox.write("tokenValue", "2");
 
+    Get.toNamed(AppRoutes.main);
   }
 
   @override

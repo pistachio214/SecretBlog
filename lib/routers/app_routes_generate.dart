@@ -15,6 +15,7 @@ import 'package:talk/ui/topic_detail/view.dart';
 import 'package:talk/ui/dynamic_detail/view.dart';
 import 'package:talk/ui/login/view.dart';
 import 'package:talk/ui/user_agreement/view.dart';
+import 'package:talk/ui/user_edit/view.dart';
 
 class AppRoutesGenerate {
   static final List<AppRoutesModels> routes = <AppRoutesModels>[
@@ -39,8 +40,11 @@ class AppRoutesGenerate {
       () => PrivacyPolicyPage(),
       transition: Transition.rightToLeft,
     ),
-    // AppRoutesModels(AppRoutes.register, () => RegisterPage()),
-    AppRoutesModels(AppRoutes.main, () => MainPage()),
+    AppRoutesModels(
+      AppRoutes.main,
+      () => MainPage(),
+    ),
+    AppRoutesModels(AppRoutes.userEdit, () => UserEditPage()),
     AppRoutesModels(
       AppRoutes.member,
       () => MemberPage(),

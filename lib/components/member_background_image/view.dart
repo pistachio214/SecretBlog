@@ -22,6 +22,9 @@ class MemberBackgroundImageComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = Get.width;
 
+    String avatar =
+        'https://pic4.zhimg.com/80/v2-a1692d6717a7c22fb277a6a1e4443a98_hd.jpg';
+
     return Stack(
       children: [
         SizedBox(
@@ -49,46 +52,17 @@ class MemberBackgroundImageComponent extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Icon(
-                          Icons.settings,
-                          color: Colors.white,
-                          size: 28,
-                        ),
-                      ],
-                    ),
+                    const SizedBox(height: 30),
                     Gaps.vGap15,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const AvatarComponent(
-                          url:
-                              'https://pic4.zhimg.com/80/v2-a1692d6717a7c22fb277a6a1e4443a98_hd.jpg',
+                        AvatarComponent(
+                          url: avatar,
                           width: 70,
                           height: 70,
                         ),
-                        Container(
-                          width: 58,
-                          height: 28,
-                          alignment: Alignment.center,
-                          decoration: const BoxDecoration(
-                            color: Color(0xFFff7faa),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(18),
-                            ),
-                          ),
-                          child: const Text(
-                            "编辑",
-                            style: TextStyle(
-                              fontFamily: 'PingFang-SC-Medium',
-                              color: Colors.white,
-                              fontSize: 13,
-                            ),
-                          ),
-                        )
                       ],
                     ),
                     Gaps.vGap15,
@@ -176,9 +150,7 @@ class MemberBackgroundImageComponent extends StatelessWidget {
                             ),
                           ],
                         ),
-                        const SizedBox(
-                          width: 32,
-                        ),
+                        const SizedBox(width: 32),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -201,34 +173,7 @@ class MemberBackgroundImageComponent extends StatelessWidget {
                             ),
                           ],
                         ),
-                        const SizedBox(
-                          width: 32,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              '${userInfo.footprint}',
-                              style: const TextStyle(
-                                fontSize: 18,
-                                fontFamily: 'PingFang-SC-Medium',
-                                fontWeight: FontWeight.w800,
-                                color: Colors.white,
-                              ),
-                            ),
-                            Gaps.vGap8,
-                            const Text(
-                              '足迹',
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Color(0xfff5f5f5),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          width: 32,
-                        ),
+                        const SizedBox(width: 32),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [

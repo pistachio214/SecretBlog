@@ -47,19 +47,25 @@ class UserComponent extends StatelessWidget {
                         children: [
                           Container(
                             padding: const EdgeInsets.only(
-                                top: 40, left: 20, right: 20),
+                              top: 40,
+                              left: 20,
+                              right: 20,
+                            ),
                             width: screenWidth,
-                            height: 340,
+                            height: 360,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Row(
+                                Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
-                                    Icon(
-                                      Icons.settings,
-                                      color: Colors.white,
-                                      size: 28,
+                                    IconButton(
+                                      onPressed: () => logic.onToSettingAction(),
+                                      icon: const Icon(
+                                        Icons.settings,
+                                        color: Colors.white,
+                                        size: 28,
+                                      ),
                                     ),
                                   ],
                                 ),

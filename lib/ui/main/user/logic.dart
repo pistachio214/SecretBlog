@@ -22,6 +22,10 @@ class UserLogic extends GetxController with GetSingleTickerProviderStateMixin {
     Get.toNamed(AppRoutes.userEdit);
   }
 
+  void onToSettingAction() {
+    Get.toNamed(AppRoutes.setting);
+  }
+
   @override
   void onClose() {
     tabController.dispose();

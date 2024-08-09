@@ -11,6 +11,7 @@ import 'package:talk/ui/member/view.dart';
 import 'package:talk/ui/message_private_chat/view.dart';
 import 'package:talk/ui/privacy_policy/view.dart';
 import 'package:talk/ui/register/view.dart';
+import 'package:talk/ui/setting/view.dart';
 import 'package:talk/ui/topic_detail/view.dart';
 import 'package:talk/ui/dynamic_detail/view.dart';
 import 'package:talk/ui/login/view.dart';
@@ -45,6 +46,7 @@ class AppRoutesGenerate {
       () => MainPage(),
     ),
     AppRoutesModels(AppRoutes.userEdit, () => UserEditPage()),
+    AppRoutesModels(AppRoutes.setting, () => SettingPage()),
     AppRoutesModels(
       AppRoutes.member,
       () => MemberPage(),

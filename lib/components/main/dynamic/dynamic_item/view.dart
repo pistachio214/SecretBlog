@@ -9,8 +9,10 @@ import 'package:talk/routers/app_routes.dart';
 
 import 'logic.dart';
 
-import 'package:talk/models/dynamic_model.dart';
 import 'package:talk/utils/icon_font_util.dart';
+
+import 'package:talk/api/response_model/DynamicRecommendPostResponse.dart'
+    as dynamic_recommend_post_response;
 
 class DynamicItemComponent extends StatelessWidget {
   DynamicItemComponent({
@@ -21,7 +23,7 @@ class DynamicItemComponent extends StatelessWidget {
     required this.onTapItem,
   });
 
-  final DynamicModel data;
+  final dynamic_recommend_post_response.Items data;
   final int index;
   final Function onTapImage;
   final Function onTapItem;
@@ -39,20 +41,26 @@ class DynamicItemComponent extends StatelessWidget {
         children: [
           _renderCover(context),
           Gaps.vGap15,
-          DynamicItemImageComponent(
-            image: data.image,
-            onTap: () => onTapImage(),
+          Visibility(
+            visible: data.files != null && data.files!.isNotEmpty,
+            child: DynamicItemImageComponent(
+              image: data.files!.map((file) => file.url!).toList(),
+              onTap: () => onTapImage(),
+            ),
           ),
           Gaps.vGap15,
           GestureDetector(
             onTap: () => logic.goDetail(),
-            child: Text(
-              data.content,
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
-                letterSpacing: 1,
-                fontSize: 14,
+            child: Visibility(
+              visible: generateContent(data) != null,
+              child: Text(
+                "${data.content}",
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  letterSpacing: 1,
+                  fontSize: 14,
+                ),
               ),
             ),
           ),
@@ -61,6 +69,18 @@ class DynamicItemComponent extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String? generateContent(dynamic_recommend_post_response.Items data) {
+    if (data.title != null) {
+      return data.title;
+    }
+
+    if (data.content != null) {
+      return data.content;
+    }
+
+    return null;
   }
 
   // 用户头像信息
@@ -79,7 +99,7 @@ class DynamicItemComponent extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               AvatarComponent(
-                url: data.userInfo.avatar!,
+                url: data.users!.avatar!,
                 width: 40,
                 height: 40,
               ),
@@ -88,7 +108,7 @@ class DynamicItemComponent extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    data.userInfo.name ?? "",
+                    "${data.users?.nickname}",
                     style: const TextStyle(
                       fontSize: 16,
                       color: Color(0xFF333333),
@@ -98,7 +118,7 @@ class DynamicItemComponent extends StatelessWidget {
                     padding: EdgeInsets.only(top: 4),
                   ),
                   Text(
-                    data.userInfo.slign ?? "",
+                    "${data.users?.userExtend?.signature}",
                     style: const TextStyle(
                       fontSize: 12,
                       color: Color(0xFF999999),

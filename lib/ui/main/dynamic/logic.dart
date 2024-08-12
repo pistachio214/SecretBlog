@@ -20,6 +20,7 @@ class DynamicLogic extends GetxController
   void onInit() {
     final dynamicListLogic = Get.put(DynamicListLogic());
     dynamicListLogic.onInitBanner();
+    dynamicListLogic.onInitDynamic();
 
     super.onInit();
   }

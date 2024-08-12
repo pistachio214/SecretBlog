@@ -1,7 +1,9 @@
 import 'package:easy_refresh/easy_refresh.dart';
 import 'package:get/get.dart';
 import 'package:talk/api/banner_api.dart';
+import 'package:talk/api/post_api.dart';
 import 'package:talk/api/response_model/dynamic_banner_list_response.dart';
+import 'package:talk/api/response_model/DynamicRecommendPostResponse.dart';
 import 'package:talk/lang/http_status.dart';
 import 'package:talk/models/dynamic_model.dart';
 import 'package:talk/models/user_model.dart';
@@ -65,11 +67,18 @@ class DynamicListLogic extends GetxController {
     });
   }
 
+  void onInitDynamic() {
+    PostApi.dynamicBannerListAction()
+        .then((DynamicRecommendPostResponse response) {
+      state.dynamicList.value = response.data!.items!;
+    });
+  }
+
   @override
   void onReady() {
-    state.dynamicList.add(testData);
-    state.dynamicList.add(testData);
-    state.dynamicList.add(testData);
+    // state.dynamicList.add(testData);
+    // state.dynamicList.add(testData);
+    // state.dynamicList.add(testData);
     super.onReady();
   }
 }

@@ -76,12 +76,12 @@ class TopicDetailPage extends StatelessWidget {
                     scrollDirection: Axis.vertical,
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (BuildContext context, int index) {
-                      return DynamicItemComponent(
-                        index: index,
-                        data: state.dynamicList[index],
-                        onTapImage: () {},
-                        onTapItem: () {},
-                      );
+                      // return DynamicItemComponent(
+                      //   index: index,
+                      //   data: state.dynamicList[index],
+                      //   onTapImage: () {},
+                      //   onTapItem: () {},
+                      // );
                     },
                   ),
                 ],

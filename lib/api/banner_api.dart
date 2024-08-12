@@ -7,7 +7,7 @@ import 'package:talk/lang/dio_method.dart';
 class BannerApi {
   static final CancelToken _cancelToken = CancelToken();
 
-  /// 注册
+  /// 推荐页的banner列表
   static Future<DynamicBannerListResponse> dynamicBannerListAction() async {
     Response response = await DioService().request(
       "/main-dynamic/recommend/banner",

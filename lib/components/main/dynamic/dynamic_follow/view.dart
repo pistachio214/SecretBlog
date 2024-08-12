@@ -32,12 +32,12 @@ class DynamicFollowComponent extends StatelessWidget {
                 scrollDirection: Axis.vertical,
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (BuildContext context, int index) {
-                  return DynamicItemComponent(
-                    data: state.dynamicList[index],
-                    index: index,
-                    onTapImage: () {},
-                    onTapItem: () {},
-                  );
+                  // return DynamicItemComponent(
+                  //   data: state.dynamicList[index],
+                  //   index: index,
+                  //   onTapImage: () {},
+                  //   onTapItem: () {},
+                  // );
                 },
                 separatorBuilder: (BuildContext context, int index) =>
                     const Divider(),

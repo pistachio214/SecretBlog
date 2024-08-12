@@ -1,21 +1,23 @@
 import 'package:get/get.dart';
 
 import 'package:easy_refresh/easy_refresh.dart';
-import 'package:talk/api/response_model/dynamic_banner_list_response.dart';
-import 'package:talk/models/dynamic_model.dart';
+import 'package:talk/api/response_model/dynamic_banner_list_response.dart'
+    as dynamic_banner_list_response;
+import 'package:talk/api/response_model/DynamicRecommendPostResponse.dart'
+    as dynamic_recommend_post_response;
 
 class DynamicListState {
-  late RxList<Data> dynamicBannerList;
-  late RxList<DynamicModel> dynamicList;
+  late RxList<dynamic_banner_list_response.Data> dynamicBannerList;
+  late RxList<dynamic_recommend_post_response.Items> dynamicList;
   late Rx<EasyRefreshController> easyController;
 
   DynamicListState() {
-    dynamicBannerList = <Data>[].obs;
+    dynamicBannerList = <dynamic_banner_list_response.Data>[].obs;
     easyController = EasyRefreshController(
       controlFinishRefresh: true,
       controlFinishLoad: true,
     ).obs;
 
-    dynamicList = <DynamicModel>[].obs;
+    dynamicList = <dynamic_recommend_post_response.Items>[].obs;
   }
 }

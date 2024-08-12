@@ -1,4 +1,8 @@
 import 'package:get/get.dart';
+import 'package:talk/api/auth_api.dart';
+import 'package:talk/api/request_model/register_request.dart';
+import 'package:talk/api/response_model/normal_response.dart';
+import 'package:talk/lang/http_status.dart';
 import 'package:talk/routers/app_routes.dart';
 import 'package:talk/utils/toast_util.dart';
 
@@ -50,6 +54,20 @@ class RegisterLogic extends GetxController {
       ToastUtil.shotToast("两次密码不一致");
       return;
     }
+
+    RegisterRequest request = RegisterRequest(
+      username: username,
+      password: password,
+      repassword: rePassword,
+    );
+
+    AuthApi.registerAction(request).then((NormalResponse response) {
+      if (response.code == HttpStatus.success) {
+        ToastUtil.shotToast("注册成功！");
+
+        Get.offNamed(AppRoutes.login);
+      }
+    });
   }
 
   @override

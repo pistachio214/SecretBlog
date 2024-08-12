@@ -1,5 +1,8 @@
 import 'package:easy_refresh/easy_refresh.dart';
 import 'package:get/get.dart';
+import 'package:talk/api/banner_api.dart';
+import 'package:talk/api/response_model/dynamic_banner_list_response.dart';
+import 'package:talk/lang/http_status.dart';
 import 'package:talk/models/dynamic_model.dart';
 import 'package:talk/models/user_model.dart';
 
@@ -26,9 +29,10 @@ class DynamicListLogic extends GetxController {
       ],
       slign: '我胖虎今天就是要搞事情~',
       avatar:
-      'https://pic4.zhimg.com/80/v2-a1692d6717a7c22fb277a6a1e4443a98_hd.jpg',
+          'https://pic4.zhimg.com/80/v2-a1692d6717a7c22fb277a6a1e4443a98_hd.jpg',
     ),
-    content: '我胖虎今天就是要搞事情,我胖虎今天就是要搞事情,我胖虎今天就是要搞事情,我胖虎今天就是要搞事情,我胖虎今天就是要搞事情,我胖虎今天就是要搞事情,我胖虎今天就是要搞事情,我胖虎今天就是要搞事情,我胖虎今天就是要搞事情.',
+    content:
+        '我胖虎今天就是要搞事情,我胖虎今天就是要搞事情,我胖虎今天就是要搞事情,我胖虎今天就是要搞事情,我胖虎今天就是要搞事情,我胖虎今天就是要搞事情,我胖虎今天就是要搞事情,我胖虎今天就是要搞事情,我胖虎今天就是要搞事情.',
     image: [
       'http://wx1.sinaimg.cn/large/a6d0124fly1fmvjldxon7j204w057js6.jpg',
     ],
@@ -49,6 +53,15 @@ class DynamicListLogic extends GetxController {
   Future<Null> addMoreData() async {
     Future.delayed(const Duration(seconds: 2), () {
       state.easyController.value.finishLoad(IndicatorResult.success);
+    });
+  }
+
+  void onInitBanner() {
+    BannerApi.dynamicBannerListAction()
+        .then((DynamicBannerListResponse response) {
+      if (response.code == HttpStatus.success) {
+        state.dynamicBannerList.value = response.data;
+      }
     });
   }
 

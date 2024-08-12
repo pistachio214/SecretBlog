@@ -34,7 +34,7 @@ class LoadImage extends StatelessWidget {
         format: format,
       );
     } else {
-      if (image.startsWith('http')) {
+      if (image.startsWith('http') || image.startsWith('https')) {
         return CachedNetworkImage(
           imageUrl: image,
           placeholder: (context, url) => LoadAssetImage(

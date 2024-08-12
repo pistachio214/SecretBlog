@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import 'package:get/get.dart';
+import 'package:talk/api/response_model/dynamic_banner_list_response.dart';
 import 'package:talk/components/load_image_util.dart';
 import 'package:talk/components/main/dynamic/dynamic_item/view.dart';
 import 'package:talk/components/talk_app_list_component.dart';
@@ -45,25 +46,25 @@ class DynamicListComponent extends StatelessWidget {
                         )
                       ],
                     ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(12.0),
-                      child: Swiper(
-                        key: UniqueKey(),
-                        index: 0,
-                        itemCount: 4,
-                        autoplay: false,
-                        itemBuilder: (BuildContext context, int index) {
-                          return _swiperBuilder(context, index);
-                        },
-                        duration: 3000,
-                        // banner界面显示大小 100%
-                        viewportFraction: 1,
-                        scale: 1,
-                        pagination: null,
-                        control: null,
-                        onTap: (int index) {
-                          Get.log("点击的轮播图");
-                        },
+                    child: Obx(
+                      () => ClipRRect(
+                        borderRadius: BorderRadius.circular(12.0),
+                        child: Swiper(
+                          key: UniqueKey(),
+                          index: 0,
+                          itemCount: state.dynamicBannerList.length,
+                          autoplay: false,
+                          itemBuilder: (BuildContext context, int index) {
+                            return _swiperBuilder(context, index);
+                          },
+                          duration: 3000,
+                          // banner界面显示大小 100%
+                          viewportFraction: 1,
+                          scale: 1,
+                          pagination: null,
+                          control: null,
+                          onTap: (int index) => logic.onInitBanner(),
+                        ),
                       ),
                     ),
                   ),
@@ -106,10 +107,13 @@ class DynamicListComponent extends StatelessWidget {
   }
 
   Widget _swiperBuilder(BuildContext context, int index) {
+    Data data = state.dynamicBannerList[index];
+    Get.log(data.toJson().toString());
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(12),
-      child: const LoadImage(
-        image: "index_banner",
+      child: LoadImage(
+        image: data.image,
         fit: BoxFit.cover,
       ),
     );

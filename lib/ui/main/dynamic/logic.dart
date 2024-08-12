@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:talk/components/main/dynamic/dynamic_list/logic.dart';
 
 import 'state.dart';
 
@@ -17,6 +18,9 @@ class DynamicLogic extends GetxController
 
   @override
   void onInit() {
+    final dynamicListLogic = Get.put(DynamicListLogic());
+    dynamicListLogic.onInitBanner();
+
     super.onInit();
   }
 

@@ -12,10 +12,10 @@ class RouteAuthMiddleware extends GetMiddleware {
   RouteSettings? redirect(String? route) {
     //缓存实例化
     final GetStorage storageBox = GetStorage();
-    String? tokenName = storageBox.read("tokenName");
-    String? tokenValue = storageBox.read("tokenValue");
+    String? accessToken = storageBox.read("accessToken");
+    String? refreshToken = storageBox.read("refreshToken");
 
-    if (tokenName == null || tokenValue == null) {
+    if (accessToken == null || refreshToken == null) {
       return const RouteSettings(name: AppRoutes.login);
     }
 

@@ -1,5 +1,9 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:talk/api/auth_api.dart';
+import 'package:talk/api/request_model/login_request.dart';
+import 'package:talk/api/response_model/login_response.dart';
+import 'package:talk/lang/http_status.dart';
 import 'package:talk/routers/app_routes.dart';
 import 'package:talk/utils/toast_util.dart';
 
@@ -43,12 +47,22 @@ class LoginLogic extends GetxController {
       return;
     }
 
-    //缓存实例化
-    final GetStorage storageBox = GetStorage();
-    storageBox.write("tokenName", "1");
-    storageBox.write("tokenValue", "2");
+    LoginRequest request = LoginRequest(username: username, password: password);
+    AuthApi.loginAction(request).then((LoginResponse response) {
+      if (response.code == HttpStatus.success) {
+        String? tokenType = response.data?.tokenType;
+        String? accessToken = response.data?.accessToken;
+        String? refreshToken = response.data?.refreshToken;
 
-    Get.toNamed(AppRoutes.main);
+        //缓存实例化
+        final GetStorage storageBox = GetStorage();
+        storageBox.write("tokenType", tokenType);
+        storageBox.write("accessToken", accessToken);
+        storageBox.write("refreshToken", refreshToken);
+      }
+
+      Get.toNamed(AppRoutes.main);
+    });
   }
 
   @override

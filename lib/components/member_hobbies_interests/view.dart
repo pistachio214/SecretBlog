@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:talk/components/gaps_component.dart';
 import 'package:talk/components/tag_item_component.dart';
-import 'package:talk/models/user_model.dart';
 
 import 'logic.dart';
 
 class MemberHobbiesInterestsComponent extends StatelessWidget {
-  MemberHobbiesInterestsComponent({super.key, required this.userInfo});
+  MemberHobbiesInterestsComponent({super.key, required this.hobby});
 
-  final UserModel userInfo;
+  final List<String> hobby;
 
   final logic = Get.put(MemberHobbiesInterestsLogic());
   final state = Get.find<MemberHobbiesInterestsLogic>().state;
@@ -41,16 +40,13 @@ class MemberHobbiesInterestsComponent extends StatelessWidget {
         Wrap(
           spacing: 10,
           runSpacing: 8,
-          children: buildTagItem(),
+          children: List.generate(hobby.length, (index) {
+            return TagItemComponent(
+              text: hobby[index],
+            );
+          }),
         ),
       ],
     );
   }
-
-  List<Widget> buildTagItem() =>
-      List.generate(userInfo.taglist!.length, (index) {
-        return TagItemComponent(
-          text: userInfo.taglist![index],
-        );
-      });
 }

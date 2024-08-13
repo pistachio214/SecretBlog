@@ -5,13 +5,13 @@ import 'package:talk/components/avatar_component.dart';
 import 'package:talk/components/gaps_component.dart';
 import 'package:talk/components/main/discovery/topic_item/view.dart';
 import 'package:talk/components/main/dynamic/dynamic_item_image/view.dart';
-import 'package:talk/routers/app_routes.dart';
+import 'package:talk/utils/toast_util.dart';
 
 import 'logic.dart';
 
 import 'package:talk/utils/icon_font_util.dart';
 
-import 'package:talk/api/response_model/DynamicRecommendPostResponse.dart'
+import 'package:talk/api/response_model/dynamic_recommend_post_response.dart'
     as dynamic_recommend_post_response;
 
 class DynamicItemComponent extends StatelessWidget {
@@ -33,28 +33,30 @@ class DynamicItemComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String? generateContentString = generateContent();
+
     return Container(
       color: Colors.white,
       margin: const EdgeInsets.only(top: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _renderCover(context),
+          _renderCover(),
           Gaps.vGap15,
           Visibility(
-            visible: data.files != null && data.files!.isNotEmpty,
+            visible: data.files.isNotEmpty,
             child: DynamicItemImageComponent(
-              image: data.files!.map((file) => file.url!).toList(),
+              image: data.files.map((file) => file.url).toList(),
               onTap: () => onTapImage(),
             ),
           ),
           Gaps.vGap15,
           GestureDetector(
-            onTap: () => logic.goDetail(),
+            onTap: () => onTapItem(),
             child: Visibility(
-              visible: generateContent(data) != null,
+              visible: generateContentString != null,
               child: Text(
-                "${data.content}",
+                "$generateContentString",
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
@@ -65,18 +67,18 @@ class DynamicItemComponent extends StatelessWidget {
             ),
           ),
           Gaps.vGap15,
-          _renderDynamicTagAndComment(context),
+          _renderDynamicTagAndComment(),
         ],
       ),
     );
   }
 
-  String? generateContent(dynamic_recommend_post_response.Items data) {
-    if (data.title != null) {
+  String? generateContent() {
+    if (data.title.isNotEmpty) {
       return data.title;
     }
 
-    if (data.content != null) {
+    if (data.content.isNotEmpty) {
       return data.content;
     }
 
@@ -84,22 +86,19 @@ class DynamicItemComponent extends StatelessWidget {
   }
 
   // 用户头像信息
-  Widget _renderCover(context) {
+  Widget _renderCover() {
     return GestureDetector(
-      onTap: () {
-        // NavigatorUtils.push(context, UsersRouter.userPage);
-        Get.toNamed(AppRoutes.member);
-      },
+      onTap: () => logic.goMemberPage(data.userId),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
+        children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
+            children: [
               AvatarComponent(
-                url: data.users!.avatar!,
+                url: data.users!.avatar,
                 width: 40,
                 height: 40,
               ),
@@ -128,49 +127,54 @@ class DynamicItemComponent extends StatelessWidget {
               ),
             ],
           ),
-          Container(
-            height: 28,
-            width: 58,
-            alignment: Alignment.center,
-            decoration: const BoxDecoration(
-              color: Color(0xFFff7faa),
-              borderRadius: BorderRadius.all(
-                Radius.circular(18),
-              ),
-            ),
-            child: const Text(
-              '关注',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 13,
-              ),
-            ),
-          ),
+          // Container(
+          //   height: 28,
+          //   width: 58,
+          //   alignment: Alignment.center,
+          //   decoration: const BoxDecoration(
+          //     color: Color(0xFFff7faa),
+          //     borderRadius: BorderRadius.all(
+          //       Radius.circular(18),
+          //     ),
+          //   ),
+          //   child: const Text(
+          //     '关注',
+          //     style: TextStyle(
+          //       color: Colors.white,
+          //       fontSize: 13,
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
   }
 
   // 动态
-  Widget _renderDynamicTagAndComment(context) {
+  Widget _renderDynamicTagAndComment() {
+    List<dynamic_recommend_post_response.Tags>? tags = data.tags;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            TopicItemComponent(
-              topic: '搞事情~',
-              onTap: () {
-                // NavigatorUtils.push(context, DiscoveryRouter.topicDetailPage);
-              },
-            )
-          ],
+        Visibility(
+          visible: tags.isNotEmpty,
+          child: Row(
+            children: List.generate(tags.length, (index) {
+              return TopicItemComponent(
+                topic: tags[index].name,
+                onTap: () {
+                  ToastUtil.shotToast("后续点击进入话题的列表");
+                },
+              );
+            }),
+          ),
         ),
         Gaps.vGap15,
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(
+            const Icon(
               IconFont.icon_fabu,
               size: 20,
             ),
@@ -179,14 +183,14 @@ class DynamicItemComponent extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Icon(
+                    const Icon(
                       IconFont.icon_guanzhu,
                       size: 20,
                     ),
                     Gaps.hGap8,
                     Text(
-                      '32',
-                      style: TextStyle(
+                      "${data.likeNum}",
+                      style: const TextStyle(
                         fontSize: 15,
                         color: Color(0xFF999999),
                       ),
@@ -197,14 +201,14 @@ class DynamicItemComponent extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Icon(
+                    const Icon(
                       IconFont.icon_liaotian,
                       size: 20,
                     ),
                     Gaps.hGap8,
                     Text(
-                      '38',
-                      style: TextStyle(
+                      "${data.reviewNum}",
+                      style: const TextStyle(
                         fontSize: 15,
                         color: Color(0xFF999999),
                       ),

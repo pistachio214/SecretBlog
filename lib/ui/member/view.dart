@@ -27,32 +27,47 @@ class MemberPage extends StatelessWidget {
         behavior: NoShadowScrollBehaviorHandle(),
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          child: SizedBox(
-            width: screenWidth,
-            child: Column(
-              children: [
-                MemberBackgroundImageComponent(userInfo: state.userInfo.value),
-                Gaps.vGap15,
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // 照片墙
-                      MemberPhotoWallComponent(
-                        userInfo: state.userInfo.value,
-                      ),
-                      const SizedBox(height: 20),
-                      // 兴趣爱好
-                      MemberHobbiesInterestsComponent(
-                        userInfo: state.userInfo.value,
-                      ),
-                    ],
+          child: Obx(
+            () => SizedBox(
+              width: screenWidth,
+              child: Column(
+                children: [
+                  MemberBackgroundImageComponent(
+                      userInfo: state.userInfo.value),
+                  Gaps.vGap15,
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // 照片墙
+                        Visibility(
+                          visible: state.imagesList.isNotEmpty,
+                          child: MemberPhotoWallComponent(
+                            images: state.imagesList,
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        // 兴趣爱好
+                        Visibility(
+                          visible: state.userInfo.value.userExtend != null &&
+                              state.userInfo.value.userExtend!.hobby.isNotEmpty,
+                          child: MemberHobbiesInterestsComponent(
+                            hobby: state.userInfo.value.userExtend!.hobby,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                // 个人动态
-                MemberDynamicsComponent(),
-              ],
+                  // 个人动态
+                  Visibility(
+                    visible: state.dynamicList.isNotEmpty,
+                    child: MemberDynamicsComponent(
+                      lists: state.dynamicList,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

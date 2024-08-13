@@ -3,9 +3,10 @@ import 'package:get/get.dart';
 import 'package:talk/components/avatar_component.dart';
 import 'package:talk/components/gaps_component.dart';
 import 'package:talk/components/load_image_util.dart';
-import 'package:talk/models/user_model.dart';
 
 import 'logic.dart';
+
+import 'package:talk/api/response_model/user_mine_response.dart' as user_mine;
 
 class MemberBackgroundImageComponent extends StatelessWidget {
   MemberBackgroundImageComponent({
@@ -13,7 +14,7 @@ class MemberBackgroundImageComponent extends StatelessWidget {
     required this.userInfo,
   });
 
-  final UserModel userInfo;
+  final user_mine.Data userInfo;
 
   final logic = Get.put(MemberBackgroundImageComponentLogic());
   final state = Get.find<MemberBackgroundImageComponentLogic>().state;
@@ -22,16 +23,13 @@ class MemberBackgroundImageComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = Get.width;
 
-    String avatar =
-        'https://pic4.zhimg.com/80/v2-a1692d6717a7c22fb277a6a1e4443a98_hd.jpg';
-
     return Stack(
       children: [
         SizedBox(
           width: screenWidth,
           height: 360,
           child: LoadImage(
-            image: userInfo.bgImage!,
+            image: userInfo.userExtend!.bgImage,
           ),
         ),
         Container(
@@ -59,7 +57,7 @@ class MemberBackgroundImageComponent extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         AvatarComponent(
-                          url: avatar,
+                          url: userInfo.avatar,
                           width: 70,
                           height: 70,
                         ),
@@ -67,7 +65,7 @@ class MemberBackgroundImageComponent extends StatelessWidget {
                     ),
                     Gaps.vGap15,
                     Text(
-                      userInfo.name!,
+                      userInfo.nickname,
                       style: const TextStyle(
                         fontSize: 20,
                         color: Colors.white,
@@ -80,15 +78,15 @@ class MemberBackgroundImageComponent extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text(
-                          '${userInfo.age}',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w800,
-                          ),
-                        ),
-                        Gaps.hGap8,
+                        // Text(
+                        //   '${userInfo.age}',
+                        //   style: const TextStyle(
+                        //     color: Colors.white,
+                        //     fontSize: 16,
+                        //     fontWeight: FontWeight.w800,
+                        //   ),
+                        // ),
+                        // Gaps.hGap8,
                         Container(
                           padding: const EdgeInsets.only(
                             top: 2,
@@ -117,7 +115,7 @@ class MemberBackgroundImageComponent extends StatelessWidget {
                     ),
                     Gaps.vGap8,
                     Text(
-                      userInfo.slign!,
+                      userInfo.userExtend!.signature,
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 16,
@@ -132,7 +130,7 @@ class MemberBackgroundImageComponent extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              '${userInfo.dynamic}',
+                              '${userInfo.dynamicNumber}',
                               style: const TextStyle(
                                 fontSize: 18,
                                 fontFamily: 'PingFang-SC-Medium',
@@ -155,7 +153,7 @@ class MemberBackgroundImageComponent extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              '${userInfo.lovenumber}',
+                              userInfo.likeNumber,
                               style: const TextStyle(
                                 fontSize: 18,
                                 fontFamily: 'PingFang-SC-Medium',
@@ -178,7 +176,7 @@ class MemberBackgroundImageComponent extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              '${userInfo.fans}k',
+                              '${userInfo.fansNumber}',
                               style: const TextStyle(
                                 fontSize: 18,
                                 fontFamily: 'PingFang-SC-Medium',

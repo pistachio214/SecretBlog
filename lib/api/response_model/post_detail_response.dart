@@ -1,32 +1,32 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'dynamic_recommend_post_response.g.dart';
+part 'post_detail_response.g.dart';
 
-@JsonSerializable()
-class DynamicRecommendPostResponse {
+@JsonSerializable(fieldRename: FieldRename.none)
+class PostDetailResponse {
   @JsonKey(defaultValue: 0)
   final int code;
   @JsonKey(defaultValue: '')
   final String message;
   final Data? data;
 
-  const DynamicRecommendPostResponse({
+  const PostDetailResponse({
     required this.code,
     required this.message,
     this.data,
   });
 
-  factory DynamicRecommendPostResponse.fromJson(Map<String, dynamic> json) =>
-      _$DynamicRecommendPostResponseFromJson(json);
+  factory PostDetailResponse.fromJson(Map<String, dynamic> json) =>
+      _$PostDetailResponseFromJson(json);
 
-  Map<String, dynamic> toJson() => _$DynamicRecommendPostResponseToJson(this);
+  Map<String, dynamic> toJson() => _$PostDetailResponseToJson(this);
 
-  DynamicRecommendPostResponse copyWith({
+  PostDetailResponse copyWith({
     int? code,
     String? message,
     Data? data,
   }) {
-    return DynamicRecommendPostResponse(
+    return PostDetailResponse(
       code: code ?? this.code,
       message: message ?? this.message,
       data: data ?? this.data,
@@ -34,52 +34,12 @@ class DynamicRecommendPostResponse {
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.none)
 class Data {
-  @JsonKey(defaultValue: 0)
-  final int currentPage;
-  @JsonKey(defaultValue: 0)
-  final int perPage;
-  @JsonKey(defaultValue: 0)
-  final int total;
-  @JsonKey(defaultValue: [])
-  final List<Items> items;
-
-  const Data({
-    required this.currentPage,
-    required this.perPage,
-    required this.total,
-    required this.items,
-  });
-
-  factory Data.fromJson(Map<String, dynamic> json) =>
-      _$DataFromJson(json);
-
-  Map<String, dynamic> toJson() => _$DataToJson(this);
-
-  Data copyWith({
-    int? currentPage,
-    int? perPage,
-    int? total,
-    List<Items>? items,
-  }) {
-    return Data(
-      currentPage: currentPage ?? this.currentPage,
-      perPage: perPage ?? this.perPage,
-      total: total ?? this.total,
-      items: items ?? this.items,
-    );
-  }
-}
-
-@JsonSerializable()
-class Items {
   @JsonKey(defaultValue: 0)
   final int id;
   @JsonKey(defaultValue: 0)
   final int userId;
-  @JsonKey(defaultValue: '')
-  final String title;
   @JsonKey(defaultValue: 0)
   final int type;
   @JsonKey(defaultValue: 0)
@@ -96,16 +56,15 @@ class Items {
   final int reviewNum;
   @JsonKey(defaultValue: '')
   final String createdAt;
+  @JsonKey(defaultValue: false)
+  final bool isLike;
   final Users? users;
   @JsonKey(defaultValue: [])
   final List<Files> files;
-  @JsonKey(defaultValue: [])
-  final List<Tags> tags;
 
-  const Items({
+  const Data({
     required this.id,
     required this.userId,
-    required this.title,
     required this.type,
     required this.postType,
     required this.content,
@@ -114,20 +73,19 @@ class Items {
     required this.likeNum,
     required this.reviewNum,
     required this.createdAt,
+    required this.isLike,
     this.users,
     required this.files,
-    required this.tags,
   });
 
-  factory Items.fromJson(Map<String, dynamic> json) =>
-      _$ItemsFromJson(json);
+  factory Data.fromJson(Map<String, dynamic> json) =>
+      _$DataFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ItemsToJson(this);
+  Map<String, dynamic> toJson() => _$DataToJson(this);
 
-  Items copyWith({
+  Data copyWith({
     int? id,
     int? userId,
-    String? title,
     int? type,
     int? postType,
     String? content,
@@ -136,14 +94,13 @@ class Items {
     int? likeNum,
     int? reviewNum,
     String? createdAt,
+    bool? isLike,
     Users? users,
     List<Files>? files,
-    List<Tags>? tags,
   }) {
-    return Items(
+    return Data(
       id: id ?? this.id,
       userId: userId ?? this.userId,
-      title: title ?? this.title,
       type: type ?? this.type,
       postType: postType ?? this.postType,
       content: content ?? this.content,
@@ -152,14 +109,14 @@ class Items {
       likeNum: likeNum ?? this.likeNum,
       reviewNum: reviewNum ?? this.reviewNum,
       createdAt: createdAt ?? this.createdAt,
+      isLike: isLike ?? this.isLike,
       users: users ?? this.users,
       files: files ?? this.files,
-      tags: tags ?? this.tags,
     );
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.none)
 class Users {
   @JsonKey(defaultValue: 0)
   final int id;
@@ -196,15 +153,18 @@ class Users {
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.none)
 class UserExtend {
   @JsonKey(defaultValue: 0)
   final int userId;
+  @JsonKey(defaultValue: 0)
+  final int sex;
   @JsonKey(defaultValue: '')
   final String signature;
 
   const UserExtend({
     required this.userId,
+    required this.sex,
     required this.signature,
   });
 
@@ -215,25 +175,30 @@ class UserExtend {
 
   UserExtend copyWith({
     int? userId,
+    int? sex,
     String? signature,
   }) {
     return UserExtend(
       userId: userId ?? this.userId,
+      sex: sex ?? this.sex,
       signature: signature ?? this.signature,
     );
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.none)
 class Files {
   @JsonKey(defaultValue: 0)
   final int postId;
   @JsonKey(defaultValue: '')
   final String url;
+  @JsonKey(defaultValue: 0)
+  final int type;
 
   const Files({
     required this.postId,
     required this.url,
+    required this.type,
   });
 
   factory Files.fromJson(Map<String, dynamic> json) =>
@@ -244,65 +209,12 @@ class Files {
   Files copyWith({
     int? postId,
     String? url,
+    int? type,
   }) {
     return Files(
       postId: postId ?? this.postId,
       url: url ?? this.url,
-    );
-  }
-}
-
-@JsonSerializable()
-class Tags {
-  @JsonKey(defaultValue: '')
-  final String name;
-  final Pivot? pivot;
-
-  const Tags({
-    required this.name,
-    this.pivot,
-  });
-
-  factory Tags.fromJson(Map<String, dynamic> json) =>
-      _$TagsFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TagsToJson(this);
-
-  Tags copyWith({
-    String? name,
-    Pivot? pivot,
-  }) {
-    return Tags(
-      name: name ?? this.name,
-      pivot: pivot ?? this.pivot,
-    );
-  }
-}
-
-@JsonSerializable()
-class Pivot {
-  @JsonKey(defaultValue: 0)
-  final int postId;
-  @JsonKey(defaultValue: 0)
-  final int hashtagsId;
-
-  const Pivot({
-    required this.postId,
-    required this.hashtagsId,
-  });
-
-  factory Pivot.fromJson(Map<String, dynamic> json) =>
-      _$PivotFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PivotToJson(this);
-
-  Pivot copyWith({
-    int? postId,
-    int? hashtagsId,
-  }) {
-    return Pivot(
-      postId: postId ?? this.postId,
-      hashtagsId: hashtagsId ?? this.hashtagsId,
+      type: type ?? this.type,
     );
   }
 }

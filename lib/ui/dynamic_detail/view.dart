@@ -5,6 +5,7 @@ import 'package:talk/components/gaps_component.dart';
 import 'package:talk/components/main/dynamic/dynamic_item_image/view.dart';
 import 'package:talk/handle/no_shadow_scroll_behavior_handle.dart';
 import 'package:talk/utils/icon_font_util.dart';
+import 'package:talk/utils/toast_util.dart';
 
 import 'logic.dart';
 
@@ -33,46 +34,53 @@ class DynamicDetailPage extends StatelessWidget {
         child: ScrollConfiguration(
           behavior: NoShadowScrollBehaviorHandle(),
           child: SingleChildScrollView(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Gaps.vGap15,
-                  _renderCover(context),
-                  Gaps.vGap15,
-                  DynamicItemImageComponent(
-                    image: state.images,
-                    onTap: () {},
-                  ),
-                  Gaps.vGap15,
-                  const Text(
-                    '花半开最美，情留白最浓，懂得给生命留\n白，亦是一种生活的智慧。淡泊以明志，\n'
-                    '宁静以致远，懂得给心灵留白，方能在纷杂繁琐的世界，淡看得失，宠辱不惊，去意'
-                    '无留；懂得给感情留白，方能持久生香，\n留有余地，相互欣赏，拥有默契;',
-                    softWrap: true,
-                    maxLines: null,
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      color: Colors.black,
+            child: Obx(
+              () => Container(
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Gaps.vGap15,
+                    _renderCover(),
+                    state.images.isNotEmpty
+                        ? Gaps.vGap15
+                        : const SizedBox.shrink(),
+                    state.images.isNotEmpty
+                        ? DynamicItemImageComponent(
+                            image: state.images,
+                            onTap: () {
+                              // TODO 点击查看详情大图
+                              ToastUtil.shotToast("后面做个点击查看大图");
+                            },
+                          )
+                        : const SizedBox.shrink(),
+                    Gaps.vGap15,
+                    Text(
+                      state.detail.value.content,
+                      softWrap: true,
+                      maxLines: null,
+                      style: const TextStyle(
+                        fontSize: 16.0,
+                        color: Colors.black,
+                      ),
                     ),
-                  ),
-                  Gaps.vGap15,
-                  _renderDynamicTagAndComment(context),
-                  Gaps.vGap15,
-                  const Text(
-                    '评论(4)',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Color(0xff999999),
+                    Gaps.vGap15,
+                    _renderDynamicTagAndComment(),
+                    Gaps.vGap15,
+                    const Text(
+                      '评论(4)',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Color(0xff999999),
+                      ),
                     ),
-                  ),
-                  Gaps.vGap15,
-                  _renderCommonItem(),
-                  _renderCommonItem(),
-                  _renderCommonItem(),
-                  _renderCommonItem(),
-                ],
+                    Gaps.vGap15,
+                    _renderCommonItem(),
+                    _renderCommonItem(),
+                    _renderCommonItem(),
+                    _renderCommonItem(),
+                  ],
+                ),
               ),
             ),
           ),
@@ -146,37 +154,37 @@ class DynamicDetailPage extends StatelessWidget {
     );
   }
 
-  Widget _renderDynamicTagAndComment(context) {
+  Widget _renderDynamicTagAndComment() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            GestureDetector(
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                decoration: BoxDecoration(
-                  color: const Color(0xFFff7faa),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                height: 20.0,
-                alignment: Alignment.center,
-                child: const Text(
-                  '# 话题',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
+        // Row(
+        //   children: [
+        //     GestureDetector(
+        //       child: Container(
+        //         padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        //         decoration: BoxDecoration(
+        //           color: const Color(0xFFff7faa),
+        //           borderRadius: BorderRadius.circular(10.0),
+        //         ),
+        //         height: 20.0,
+        //         alignment: Alignment.center,
+        //         child: const Text(
+        //           '# 话题',
+        //           style: TextStyle(
+        //             color: Colors.white,
+        //             fontSize: 12,
+        //           ),
+        //         ),
+        //       ),
+        //     ),
+        //   ],
+        // ),
         Gaps.vGap15,
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(
+            const Icon(
               IconFont.icon_fabu,
               size: 20,
               color: Color(0xFF999999),
@@ -186,14 +194,14 @@ class DynamicDetailPage extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Icon(
+                    const Icon(
                       IconFont.icon_guanzhu,
                       size: 20,
                     ),
                     Gaps.hGap8,
                     Text(
-                      '32',
-                      style: TextStyle(
+                      "${state.detail.value.likeNum}",
+                      style: const TextStyle(
                         fontSize: 15,
                         color: Color(0xFF999999),
                       ),
@@ -204,14 +212,14 @@ class DynamicDetailPage extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Icon(
+                    const Icon(
                       IconFont.icon_liaotian,
                       size: 20,
                     ),
                     Gaps.hGap8,
                     Text(
-                      '38',
-                      style: TextStyle(
+                      "${state.detail.value.reviewNum}",
+                      style: const TextStyle(
                         fontSize: 15,
                         color: Color(0xFF999999),
                       ),
@@ -227,18 +235,17 @@ class DynamicDetailPage extends StatelessWidget {
     );
   }
 
-  Widget _renderCover(context) {
+  Widget _renderCover() {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             AvatarComponent(
-              url:
-                  'https://img2.woyaogexing.com/2020/02/24/7d8680e03a3d46d1a84182dce9a77a33!400x400.jpeg',
+              url: state.detail.value.users!.avatar,
               width: 40,
               height: 40,
             ),
@@ -247,18 +254,18 @@ class DynamicDetailPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '奇磨叽',
-                  style: TextStyle(
+                  state.detail.value.users!.nickname,
+                  style: const TextStyle(
                     fontSize: 16,
                     color: Color(0xFF333333),
                   ),
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.only(top: 4),
                 ),
                 Text(
-                  '他大舅他二舅都是他舅,高桌子矮板凳都是木头',
-                  style: TextStyle(
+                  state.detail.value.users!.userExtend!.signature,
+                  style: const TextStyle(
                     fontSize: 12,
                     color: Color(0xFF999999),
                   ),

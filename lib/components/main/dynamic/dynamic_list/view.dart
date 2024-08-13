@@ -82,16 +82,8 @@ class DynamicListComponent extends StatelessWidget {
                           return DynamicItemComponent(
                             index: index,
                             data: state.dynamicList[index],
-                            onTapImage: () {
-                              Get.log("点击了图片");
-                              // Provider.of<CommonProvider>(context, listen: false)
-                              //     .setDynamicImageList(dynamicList[index].image);
-                              // NavigatorUtils.push(
-                              //     context, DynamicsRouter.phoTopViewGalleryScreen);
-                            },
-                            onTapItem: () {
-                              Get.log("点击ITEM");
-                            },
+                            onTapImage: () => logic.goDetail(state.dynamicList[index]),
+                            onTapItem: () => logic.goDetail(state.dynamicList[index]),
                           );
                         },
                       ),

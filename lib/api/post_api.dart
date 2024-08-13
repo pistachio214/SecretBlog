@@ -1,6 +1,6 @@
-
 import 'package:dio/dio.dart%20';
-import 'package:talk/api/response_model/DynamicRecommendPostResponse.dart';
+import 'package:talk/api/response_model/dynamic_recommend_post_response.dart';
+import 'package:talk/api/response_model/post_detail_response.dart';
 import 'package:talk/http/dio_service.dart';
 import 'package:talk/lang/dio_method.dart';
 
@@ -16,5 +16,16 @@ class PostApi {
     );
 
     return DynamicRecommendPostResponse.fromJson(response.data);
+  }
+
+  /// 帖子详情
+  static Future<PostDetailResponse> dynamicDetailAction(int id) async {
+    Response response = await DioService().request(
+      "/post/$id",
+      method: DioMethod.get,
+      cancelToken: _cancelToken,
+    );
+
+    return PostDetailResponse.fromJson(response.data);
   }
 }

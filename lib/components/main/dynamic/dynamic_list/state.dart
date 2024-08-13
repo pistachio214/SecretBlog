@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:easy_refresh/easy_refresh.dart';
 import 'package:talk/api/response_model/dynamic_banner_list_response.dart'
     as dynamic_banner_list_response;
-import 'package:talk/api/response_model/DynamicRecommendPostResponse.dart'
+import 'package:talk/api/response_model/dynamic_recommend_post_response.dart'
     as dynamic_recommend_post_response;
 
 class DynamicListState {

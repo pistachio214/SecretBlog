@@ -6,7 +6,7 @@ import 'state.dart';
 class DynamicItemLogic extends GetxController {
   final DynamicItemState state = DynamicItemState();
 
-  void goDetail() {
-    Get.toNamed(AppRoutes.dynamicDetail);
+  void goMemberPage(int userId) {
+    Get.toNamed(AppRoutes.member, arguments: userId);
   }
 }

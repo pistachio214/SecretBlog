@@ -20,7 +20,7 @@ class MemberState {
     var defaultUserInfo = const user_mine.Data(
         id: 0,
         nickname: "",
-        avatar: "",
+        avatar: null,
         dynamicNumber: 0,
         likeNumber: "0",
         fansNumber: 0,
@@ -28,7 +28,7 @@ class MemberState {
           userId: 0,
           sex: 2,
           signature: "",
-          bgImage: "",
+          bgImage: null,
           hobby: [],
         ));
 

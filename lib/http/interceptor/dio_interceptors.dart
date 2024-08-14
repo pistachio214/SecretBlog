@@ -26,7 +26,6 @@ class DioInterceptors extends Interceptor {
     if (accessToken != null && tokenType != null) {
       options.headers['Authorization'] = "$tokenType $accessToken";
     }
-
     // 如果需求上又更多的操作,直接在这里处理
     handler.next(options);
   }

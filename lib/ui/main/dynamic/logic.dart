@@ -17,12 +17,12 @@ class DynamicLogic extends GetxController
   late final PageController pageController = PageController(initialPage: 1);
 
   @override
-  void onInit() {
+  void onReady() {
     final dynamicListLogic = Get.put(DynamicListLogic());
     dynamicListLogic.onInitBanner();
     dynamicListLogic.onInitDynamic();
 
-    super.onInit();
+    super.onReady();
   }
 
   void jumpToPage(int index) {

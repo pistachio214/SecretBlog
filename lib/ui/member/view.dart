@@ -33,7 +33,8 @@ class MemberPage extends StatelessWidget {
               child: Column(
                 children: [
                   MemberBackgroundImageComponent(
-                      userInfo: state.userInfo.value),
+                    userInfo: state.userInfo.value,
+                  ),
                   Gaps.vGap15,
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 15),

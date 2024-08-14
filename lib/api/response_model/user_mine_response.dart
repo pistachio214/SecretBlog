@@ -41,7 +41,7 @@ class Data {
   @JsonKey(defaultValue: '')
   final String nickname;
   @JsonKey(defaultValue: '')
-  final String avatar;
+  final String? avatar;
   @JsonKey(defaultValue: 0)
   final int dynamicNumber;
   @JsonKey(defaultValue: '')
@@ -95,7 +95,7 @@ class UserExtend {
   @JsonKey(defaultValue: '')
   final String signature;
   @JsonKey(defaultValue: '')
-  final String bgImage;
+  final String? bgImage;
   @JsonKey(defaultValue: [])
   final List<String> hobby;
 

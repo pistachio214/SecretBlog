@@ -16,13 +16,13 @@ class MemberLogic extends GetxController {
   void onReady() {
     int userId = Get.arguments;
 
-    UserApi.minieAction(userId).then((UserMineResponse response) {
+    UserApi.minieByUserIdAction(userId).then((UserMineResponse response) {
       if (response.code == HttpStatus.success) {
         state.userInfo.value = response.data!;
       }
     });
 
-    UserApi.profileAction(userId)
+    UserApi.profileByUserIdAction(userId)
         .then((user_profile.UserProfileResponse response) {
       if (response.code == HttpStatus.success) {
         var data = response.data;
@@ -39,7 +39,7 @@ class MemberLogic extends GetxController {
       }
     });
 
-    UserApi.dynamicAction(userId)
+    UserApi.dynamicByUserIdAction(userId)
         .then((user_dynamic.UserDynamicResponse response) {
       if (response.code == HttpStatus.success) {
         var data = response.data;

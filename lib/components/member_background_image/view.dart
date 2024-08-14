@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:talk/components/avatar_component.dart';
 import 'package:talk/components/gaps_component.dart';
 import 'package:talk/components/load_image_util.dart';
+import 'package:talk/lang/const.dart';
 
 import 'logic.dart';
 
@@ -28,9 +29,17 @@ class MemberBackgroundImageComponent extends StatelessWidget {
         SizedBox(
           width: screenWidth,
           height: 360,
-          child: LoadImage(
-            image: userInfo.userExtend!.bgImage,
-          ),
+          child: userInfo.userExtend != null &&
+                  userInfo.userExtend!.bgImage != null &&
+                  userInfo.userExtend!.bgImage!.isNotEmpty
+              ? LoadImage(
+                  image: userInfo.userExtend!.bgImage!,
+                  fit: BoxFit.cover,
+                )
+              : LoadImage(
+                  image: Const.defaultBgImage,
+                  fit: BoxFit.cover,
+                ),
         ),
         Container(
           height: 360,
@@ -56,11 +65,17 @@ class MemberBackgroundImageComponent extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        AvatarComponent(
-                          url: userInfo.avatar,
-                          width: 70,
-                          height: 70,
-                        ),
+                        userInfo.avatar != null && userInfo.avatar!.isNotEmpty
+                            ? AvatarComponent(
+                                url: userInfo.avatar!,
+                                width: 70,
+                                height: 70,
+                              )
+                            : AvatarComponent(
+                                url: Const.defaultAvatar,
+                                width: 70,
+                                height: 70,
+                              ),
                       ],
                     ),
                     Gaps.vGap15,
@@ -78,39 +93,7 @@ class MemberBackgroundImageComponent extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        // Text(
-                        //   '${userInfo.age}',
-                        //   style: const TextStyle(
-                        //     color: Colors.white,
-                        //     fontSize: 16,
-                        //     fontWeight: FontWeight.w800,
-                        //   ),
-                        // ),
-                        // Gaps.hGap8,
-                        Container(
-                          padding: const EdgeInsets.only(
-                            top: 2,
-                            left: 4,
-                            right: 4,
-                            bottom: 2,
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.only(
-                              topRight: Radius.circular(10),
-                              bottomRight: Radius.circular(10),
-                              topLeft: Radius.circular(12),
-                            ),
-                            color: Colors.blue[300],
-                          ),
-                          child: const Text(
-                            '♂',
-                            style: TextStyle(
-                              fontFamily: 'PingFang-SC-Medium',
-                              color: Colors.white,
-                              fontSize: 10,
-                            ),
-                          ),
-                        ),
+                        buildSexWidget(),
                       ],
                     ),
                     Gaps.vGap8,
@@ -204,5 +187,65 @@ class MemberBackgroundImageComponent extends StatelessWidget {
         )
       ],
     );
+  }
+
+  Widget buildSexWidget() {
+    if (userInfo.userExtend != null) {
+      if (userInfo.userExtend!.sex == 1) {
+        return Container(
+          padding: const EdgeInsets.only(
+            top: 2,
+            left: 4,
+            right: 4,
+            bottom: 2,
+          ),
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.only(
+              topRight: Radius.circular(10),
+              bottomRight: Radius.circular(10),
+              topLeft: Radius.circular(12),
+            ),
+            color: Colors.blue[300],
+          ),
+          child: const Text(
+            '♂',
+            style: TextStyle(
+              fontFamily: 'PingFang-SC-Medium',
+              color: Colors.white,
+              fontSize: 10,
+            ),
+          ),
+        );
+      }
+
+      if (userInfo.userExtend!.sex == 2) {
+        return Container(
+          padding: const EdgeInsets.only(
+            top: 2,
+            left: 4,
+            right: 4,
+            bottom: 2,
+          ),
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(10),
+              bottomRight: Radius.circular(10),
+              topLeft: Radius.circular(12),
+            ),
+            color: Color(0xffE86494),
+          ),
+          child: const Text(
+            '♀',
+            style: TextStyle(
+              fontFamily: 'PingFang-SC-Medium',
+              color: Colors.white,
+              fontSize: 10,
+            ),
+          ),
+        );
+      }
+    }
+
+    return const SizedBox.shrink();
   }
 }

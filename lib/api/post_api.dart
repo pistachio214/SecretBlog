@@ -8,10 +8,11 @@ class PostApi {
   static final CancelToken _cancelToken = CancelToken();
 
   /// 推荐页的banner列表
-  static Future<DynamicRecommendPostResponse> dynamicBannerListAction() async {
+  static Future<DynamicRecommendPostResponse> dynamicListAction(int page) async {
     Response response = await DioService().request(
       "/main-dynamic/recommend/post",
       method: DioMethod.get,
+      params: {"page": page},
       cancelToken: _cancelToken,
     );
 

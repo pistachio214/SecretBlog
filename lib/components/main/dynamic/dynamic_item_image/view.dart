@@ -19,6 +19,7 @@ class DynamicItemImageComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // return const SizedBox(child: Text("images"),);
     return image.length > 1 ? gridItemImage() : itemImage();
   }
 
@@ -35,6 +36,7 @@ class DynamicItemImageComponent extends StatelessWidget {
   }
 
   Widget gridItemImage() {
+    // return const SizedBox(child: Text("images"),);
     return GridView.builder(
       shrinkWrap: true,
       itemCount: image.length > 9 ? 9 : image.length,
@@ -45,11 +47,13 @@ class DynamicItemImageComponent extends StatelessWidget {
         crossAxisSpacing: 8,
       ),
       itemBuilder: (context, index) {
+        Get.log(image[index]);
         return GestureDetector(
           onTap: () => onTap(),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(6),
             child: LoadImage(image: image[index], fit: BoxFit.cover),
+            // child: const SizedBox(child: Text("images"),),
           ),
         );
       },

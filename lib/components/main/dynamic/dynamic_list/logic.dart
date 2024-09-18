@@ -17,19 +17,18 @@ class DynamicListLogic extends GetxController {
 
   /// 下拉刷新数据
   Future<Null> refreshData() async {
-    Future.delayed(const Duration(seconds: 2), () {
-      // if (mounted) {
-      //   _getPostData(false);
-      state.easyController.value.finishRefresh();
-      // }
-    });
+    state.currentPage.value = 1;
+    onInitDynamic();
   }
 
   /// 上拉加载数据
   Future<Null> addMoreData() async {
-    Future.delayed(const Duration(seconds: 2), () {
-      state.easyController.value.finishLoad(IndicatorResult.success);
-    });
+    state.currentPage.value = 1 + state.currentPage.value;
+    onInitDynamic();
+
+    // Future.delayed(const Duration(seconds: 2), () {
+    //   state.easyController.value.finishLoad(IndicatorResult.success);
+    // });
   }
 
   void onInitBanner() {
@@ -42,9 +41,15 @@ class DynamicListLogic extends GetxController {
   }
 
   void onInitDynamic() {
-    PostApi.dynamicBannerListAction()
+    PostApi.dynamicListAction(state.currentPage.value)
         .then((DynamicRecommendPostResponse response) {
-      state.dynamicList.value = response.data!.items;
+      if (state.currentPage.value == 1) {
+        state.dynamicList.value = response.data!.items;
+        state.easyController.value.finishRefresh();
+      } else {
+        state.dynamicList.addAll(response.data!.items);
+        state.easyController.value.finishLoad(IndicatorResult.success);
+      }
     });
   }
 

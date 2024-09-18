@@ -43,13 +43,10 @@ class DynamicItemComponent extends StatelessWidget {
         children: [
           _renderCover(),
           Gaps.vGap15,
-          Visibility(
-            visible: data.files.isNotEmpty,
-            child: DynamicItemImageComponent(
-              image: data.files.map((file) => file.url).toList(),
-              onTap: () => onTapImage(),
-            ),
-          ),
+          data.files.isNotEmpty ? DynamicItemImageComponent(
+            image: data.files.map((file) => file.url).toList(),
+            onTap: () => onTapImage(),
+          ): const SizedBox.shrink(),
           Gaps.vGap15,
           GestureDetector(
             onTap: () => onTapItem(),

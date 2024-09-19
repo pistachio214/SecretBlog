@@ -42,11 +42,18 @@ class DynamicItemComponent extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _renderCover(),
-          Gaps.vGap15,
-          data.files.isNotEmpty ? DynamicItemImageComponent(
-            image: data.files.map((file) => file.url).toList(),
-            onTap: () => onTapImage(),
-          ): const SizedBox.shrink(),
+          data.files.isNotEmpty
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Gaps.vGap15,
+                    DynamicItemImageComponent(
+                      image: data.files.map((file) => file.url).toList(),
+                      onTap: () => onTapImage(),
+                    )
+                  ],
+                )
+              : const SizedBox.shrink(),
           Gaps.vGap15,
           GestureDetector(
             onTap: () => onTapItem(),
@@ -124,24 +131,24 @@ class DynamicItemComponent extends StatelessWidget {
               ),
             ],
           ),
-          // Container(
-          //   height: 28,
-          //   width: 58,
-          //   alignment: Alignment.center,
-          //   decoration: const BoxDecoration(
-          //     color: Color(0xFFff7faa),
-          //     borderRadius: BorderRadius.all(
-          //       Radius.circular(18),
-          //     ),
-          //   ),
-          //   child: const Text(
-          //     '关注',
-          //     style: TextStyle(
-          //       color: Colors.white,
-          //       fontSize: 13,
-          //     ),
-          //   ),
-          // ),
+          Container(
+            height: 28,
+            width: 58,
+            alignment: Alignment.center,
+            decoration: const BoxDecoration(
+              color: Color(0xFFff7faa),
+              borderRadius: BorderRadius.all(
+                Radius.circular(18),
+              ),
+            ),
+            child: const Text(
+              '关注',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 13,
+              ),
+            ),
+          ),
         ],
       ),
     );

@@ -113,7 +113,7 @@ class DioService {
 
     options ??= Options(method: methodValues[method]);
     try {
-      // LoadingUtil.show(message: "loading...");
+      LoadingUtil.show(message: "loading...");
 
       Response response;
       response = await _dio.request(
@@ -128,10 +128,10 @@ class DioService {
 
       return response;
     } on DioException catch (_) {
-      // LoadingUtil.dismiss();
+      LoadingUtil.dismiss();
       rethrow;
     } finally {
-      // LoadingUtil.dismiss();
+      LoadingUtil.dismiss();
     }
   }
 

@@ -47,7 +47,6 @@ class DynamicItemImageComponent extends StatelessWidget {
         crossAxisSpacing: 8,
       ),
       itemBuilder: (context, index) {
-        Get.log(image[index]);
         return GestureDetector(
           onTap: () => onTap(),
           child: ClipRRect(

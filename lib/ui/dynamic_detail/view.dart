@@ -55,16 +55,25 @@ class DynamicDetailPage extends StatelessWidget {
                           )
                         : const SizedBox.shrink(),
                     Gaps.vGap15,
+                    state.detail.value.content.isNotEmpty
+                        ? Text(
+                            state.detail.value.content,
+                            softWrap: true,
+                            maxLines: null,
+                            style: const TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.black,
+                            ),
+                          )
+                        : const SizedBox.shrink(),
+                    Gaps.vGap15,
                     Text(
-                      state.detail.value.content,
-                      softWrap: true,
-                      maxLines: null,
+                      state.detail.value.createdAt,
                       style: const TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.black,
+                        fontSize: 13,
+                        color: Color(0xFF999999),
                       ),
                     ),
-                    Gaps.vGap15,
                     _renderDynamicTagAndComment(),
                     Gaps.vGap15,
                     const Text(

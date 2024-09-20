@@ -8,7 +8,6 @@ import 'package:talk/utils/loading_util.dart';
 
 import 'interceptor/dio_interceptors.dart';
 
-
 class DioService {
   /// 设置链接超时时间
   static const int connectTimeout = 6 * 1000;
@@ -101,6 +100,7 @@ class DioService {
     Options? options,
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
+    bool loading = false,
   }) async {
     const methodValues = {
       DioMethod.get: 'get',
@@ -113,7 +113,10 @@ class DioService {
 
     options ??= Options(method: methodValues[method]);
     try {
-      LoadingUtil.show(message: "loading...");
+      if (loading) {
+        await Future.delayed(const Duration(milliseconds: 3000));
+        LoadingUtil.show(message: "loading...");
+      }
 
       Response response;
       response = await _dio.request(
@@ -128,10 +131,14 @@ class DioService {
 
       return response;
     } on DioException catch (_) {
-      LoadingUtil.dismiss();
+      if (loading) {
+        LoadingUtil.dismiss();
+      }
       rethrow;
     } finally {
-      LoadingUtil.dismiss();
+      if (loading) {
+        LoadingUtil.dismiss();
+      }
     }
   }
 

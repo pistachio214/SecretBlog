@@ -71,6 +71,13 @@ class DynamicItemComponent extends StatelessWidget {
             ),
           ),
           Gaps.vGap15,
+          Text(
+            data.createdAt,
+            style: const TextStyle(
+              fontSize: 13,
+              color: Color(0xFF999999),
+            ),
+          ),
           _renderDynamicTagAndComment(),
         ],
       ),
@@ -131,24 +138,24 @@ class DynamicItemComponent extends StatelessWidget {
               ),
             ],
           ),
-          Container(
-            height: 28,
-            width: 58,
-            alignment: Alignment.center,
-            decoration: const BoxDecoration(
-              color: Color(0xFFff7faa),
-              borderRadius: BorderRadius.all(
-                Radius.circular(18),
-              ),
-            ),
-            child: const Text(
-              '关注',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 13,
-              ),
-            ),
-          ),
+          // Container(
+          //   height: 28,
+          //   width: 58,
+          //   alignment: Alignment.center,
+          //   decoration: const BoxDecoration(
+          //     color: Color(0xFFff7faa),
+          //     borderRadius: BorderRadius.all(
+          //       Radius.circular(18),
+          //     ),
+          //   ),
+          //   child: const Text(
+          //     '关注',
+          //     style: TextStyle(
+          //       color: Colors.white,
+          //       fontSize: 13,
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );

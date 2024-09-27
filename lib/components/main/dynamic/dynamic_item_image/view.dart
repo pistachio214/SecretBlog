@@ -29,7 +29,7 @@ class DynamicItemImageComponent extends StatelessWidget {
       child: SizedBox(
           width: 120,
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(6.0),
+            borderRadius: BorderRadius.circular(2.0),
             child: LoadImage(image: image[0], fit: BoxFit.cover),
           )),
     );
@@ -50,7 +50,7 @@ class DynamicItemImageComponent extends StatelessWidget {
         return GestureDetector(
           onTap: () => onTap(),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(6),
+            borderRadius: BorderRadius.circular(2),
             child: LoadImage(image: image[index], fit: BoxFit.cover),
             // child: const SizedBox(child: Text("images"),),
           ),
